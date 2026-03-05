@@ -1,6 +1,6 @@
     {
-        "name": "VSCode Extension Catalogue",
-        "short_name": "vscodeextcat",
+        "name": "Redstone Register PWA",
+        "short_name": "RedstoneRegister",
         "start_url": "/",
         "display": "standalone",
         "background_color": "#fdfdfd",

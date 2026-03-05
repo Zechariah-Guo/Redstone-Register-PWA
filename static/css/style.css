@@ -1,47 +1,154 @@
 @import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap");
+@import url('https://fonts.cdnfonts.com/css/minecrafter-alt');
 * {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     box-sizing: border-box;
 }
 body {
-    background: #fdfdfd;
+    background: grey;
     font-family: "Nunito", sans-serif;
     font-size: 1rem;
 }
 main {
-    max-width: 900px;
     margin: auto;
     padding: 0.5rem;
-    text-align: center;
+    text-align: left;
 }
 nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    background: #686868;
+    border-radius: 90px;
+    height: 55px;
+    padding: 0 1rem;
+    overflow: hidden;
+    box-shadow: inset 0px 5px 4px rgb(64, 64, 64, 1); 
+
 }
 nav img {
-    height:100px;
+    height:45px;
+    width: auto;
+    flex: 0 0 auto; 
+    position: static;
+    padding-top: 4px;
+    transition: transform 180ms ease, filter 180ms ease;
 }
 nav ul {
     list-style: none;
     display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+    flex: 1 1 auto;
+    justify-content: flex-end;
+    overflow: hidden;
 }
 nav li {
-    margin-right: 1rem;
+    flex: 0 0 auto;
+    margin-right: 0;
 }
 nav ul li a {
-    text-decoration-line:none;
-    text-transform: uppercase; 
-    color: #393b45;
+    display: block;
+    white-space: nowrap;
+    text-decoration-line: none;
+    text-transform: uppercase;
+    color: #dc011d;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-family: 'Minecrafter', sans-serif;
+    font-size: 19px;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    transition: text-shadow 180ms ease, color 180ms ease;
 }
 nav ul li a:hover {
-    color: #14E6DD;
+    transform: translateY(-1px);
+    animation: nav-hover-bounce 520ms ease-in-out infinite;
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.35);
+    color: #f20526;
 }
-nav h1 {
-    color: #106D69;
-    margin-bottom: 0.5rem;
+
+nav img:hover {
+    transform: translateY(-1px);
+    animation: nav-hover-bounce 520ms ease-in-out infinite;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.35));
 }
+
+@keyframes nav-hover-bounce {
+    0%,
+    100% {
+        transform: translateY(-1px);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+.category-section {
+    width: 100%;
+    margin: 0;
+    text-align: left;
+}
+
+.category-heading {
+    font-size: 25px;
+    margin-bottom: 0.85rem;
+    color: #fff;
+    text-align: left;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: 0.85rem;
+}
+
+.category-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    min-height: 4rem;
+    padding: 0.85rem 1rem;
+    border-radius: 0.75rem;
+    border: 2px solid #d5d5d5;
+    background: #4e4e4e;
+    transition: box-shadow 180ms ease, transform 180ms ease;
+}
+
+.category-chip:hover {
+    transform: translateY(-1px);
+    animation: nav-hover-bounce 520ms ease-in-out infinite;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.35);
+}
+
+.category-chip:hover .category-name {
+    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.35);
+}
+
+.category-icon-slot {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.45rem;
+    border: 1px solid #cfcfcf;
+    background: rgba(255, 255, 255, 0.08);
+    flex: 0 0 2rem;
+    display: block;
+    object-fit: cover;
+}
+
+.category-name {
+    min-width: 4rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+
 .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
@@ -111,4 +218,29 @@ form {
     background: transparent;
     transition: all 0.2s;
     width:100%;
+}
+
+.introduction-panel {
+    padding-top: 0;
+    max-width: 800px;
+    margin-bottom: 1.25rem;
+}
+
+.catalogue-panel {
+    width: 100%;
+    margin: 1.5rem 0 0.75rem;
+    padding: 1.25rem clamp(20px, 3vw, 30px);
+    text-align: left;
+    background: #686868;
+    border-radius: 1.25rem;
+    box-shadow: inset 0px 5px 4px rgb(64, 64, 64, 1);
+}
+
+.intro-heading {
+    margin-bottom: 0.65rem;
+}
+
+::selection {
+  background: #fff; /* Change the background color */
+  color: red;
 }
