@@ -1,5 +1,5 @@
 name: Autograding Tests
-'on':
+'off':
 - push
 - repository_dispatch
 permissions:
