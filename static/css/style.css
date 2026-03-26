@@ -12,7 +12,6 @@ body {
 }
 main {
     margin: auto;
-    padding: 0.5rem;
     text-align: left;
 }
 nav {
@@ -20,13 +19,14 @@ nav {
     align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
-    background: #686868;
-    border-radius: 90px;
     height: 55px;
     padding: 0 1rem;
     overflow: hidden;
-    box-shadow: inset 0px 5px 4px rgb(64, 64, 64, 1); 
-
+    position: sticky;
+    top: 0;
+    background-color:rgba(128,128,128,0.5);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 nav img {
     height:45px;
@@ -34,8 +34,9 @@ nav img {
     flex: 0 0 auto; 
     position: static;
     padding-top: 4px;
-    transition: transform 180ms ease, filter 180ms ease;
 }
+
+
 nav ul {
     list-style: none;
     display: flex;
@@ -89,65 +90,56 @@ nav img:hover {
     }
 }
 
-.category-section {
+.introduction-panel {
+    padding-top: 0;
+    max-width: 800px;
+    margin-bottom: 1.25rem;
+    
+}
+
+.catalogue-panel {
     width: 100%;
-    margin: 0;
+    margin: 0 0 0.75rem;
+    padding: 1.25rem clamp(20px, 3vw, 30px);
     text-align: left;
+    background: #686868;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: inset 0px 5px 4px rgb(64, 64, 64, 1);    
+    background-image: 
+        linear-gradient(to left, rgba(0,0,0,0), rgba(104,104,104,1) 70%), 
+        url('../images/i-found-some-cool-minecraft-backgrounds-v0-kitkn6zndbt71.webp');
+        width: 100%;
+        height: 70%;
+        object-fit:cover;
+    background-position: right;
 }
 
-.category-heading {
-    font-size: 25px;
-    margin-bottom: 0.85rem;
-    color: #fff;
-    text-align: left;
+.intro-heading {
+    margin-bottom: 0.65rem;
 }
 
-.category-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
-    gap: 0.85rem;
+::selection {
+  background: #fff; /* Change the background color */
+  color: red;
 }
 
-.category-chip {
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-    min-height: 4rem;
-    padding: 0.85rem 1rem;
-    border-radius: 0.75rem;
-    border: 2px solid #d5d5d5;
-    background: #4e4e4e;
-    transition: box-shadow 180ms ease, transform 180ms ease;
+.intro-heading {
+    font-family: 'Minecrafter', sans-serif;
+    font-weight: 20;
 }
 
-.category-chip:hover {
-    transform: translateY(-1px);
-    animation: nav-hover-bounce 520ms ease-in-out infinite;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.35);
+.searchinput {
+    height: 50px;
+    width: 500px;
+    border-radius: 10px;
+    margin: 10px;
+    padding-left: 10px;
 }
 
-.category-chip:hover .category-name {
-    text-shadow: 0 4px 6px rgba(0, 0, 0, 0.35);
+.hidden {
+    display: none !important;
 }
-
-.category-icon-slot {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 0.45rem;
-    border: 1px solid #cfcfcf;
-    background: rgba(255, 255, 255, 0.08);
-    flex: 0 0 2rem;
-    display: block;
-    object-fit: cover;
-}
-
-.category-name {
-    min-width: 4rem;
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: #fff;
-}
-
 
 .container {
     display: grid;
@@ -158,13 +150,14 @@ nav img:hover {
     margin: auto;
     padding: 1rem 0;
 }
+
 .card {
     display: flex;
     align-items: center;
     flex-direction: column;
-    width: 17rem;
+    width: 20vw;
     background: #fff;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+    box-shadow: inset 0px 5px 4px rgb(64, 64, 64, 1);
     border-radius: 10px;
     margin: auto;
     overflow: hidden;
@@ -220,27 +213,4 @@ form {
     width:100%;
 }
 
-.introduction-panel {
-    padding-top: 0;
-    max-width: 800px;
-    margin-bottom: 1.25rem;
-}
 
-.catalogue-panel {
-    width: 100%;
-    margin: 1.5rem 0 0.75rem;
-    padding: 1.25rem clamp(20px, 3vw, 30px);
-    text-align: left;
-    background: #686868;
-    border-radius: 1.25rem;
-    box-shadow: inset 0px 5px 4px rgb(64, 64, 64, 1);
-}
-
-.intro-heading {
-    margin-bottom: 0.65rem;
-}
-
-::selection {
-  background: #fff; /* Change the background color */
-  color: red;
-}

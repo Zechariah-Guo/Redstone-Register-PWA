@@ -1,5 +1,7 @@
-<nav>
-    <a href="/"><img src="static\images\logo.png" alt="Redstone Register site logo." /></a>
+<nav id="navbar">
+    <script src="../static/js/script.js" defer></script>
+    <a href="/"><img src="{{ url_for('static', filename='images/logo.png')}}" alt="Redstone Register site logo." /></a>
+    <input class="navbarsearch hidden" id="navbarsearch" placeholder="Search...">
     <ul class="topnav">
         <li><a href="/">Home</a></li>
         <li><a href="add.html">Add me</a></li>
