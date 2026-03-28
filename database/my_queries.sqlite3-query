@@ -1,19 +1,67 @@
--- database: ./data_source.db
+--database: ./data_source.db
 
--- CREATE TABLE extension(extID INTERGER NOT NULL PRIMARY KEY,name TEXT NOT NULL, hyperlink TEXT NOT NULL,about TEXT NOT NULL,image TEXT NOT NULL,language TEXT NOT NULL);
+--CREATE TABLE extension(extID INTERGER NOT NULL PRIMARY KEY,name TEXT NOT NULL, hyperlink TEXT NOT NULL,about TEXT NOT NULL,image TEXT NOT NULL,language TEXT NOT NULL);
+--INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (X,"","","","",""); -- Insert template
+--INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (1,"Live Server","https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer","Launch a development local Server with live reload feature for static & dynamic pages","https://ritwickdey.gallerycdn.vsassets.io/extensions/ritwickdey/liveserver/5.7.9/1661914858952/Microsoft.VisualStudio.Services.Icons.Default","HTML CSS JS");
+--INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (2,"Render CR LF","https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf","Displays the line ending symbol and optionally extra whitespace when 'Render whitespace' is turned on.","https://medo64.gallerycdn.vsassets.io/extensions/medo64/render-crlf/1.7.1/1689315206970/Microsoft.VisualStudio.Services.Icons.Default","#BASH");
+--INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (3,"Start GIT BASH","https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash","Adds a bash command to VSCode that allows you to start git-bash in the current workspace's root folder.","https://mccarter.gallerycdn.vsassets.io/extensions/mccarter/start-git-bash/1.2.1/1499505567572/Microsoft.VisualStudio.Services.Icons.Default","#BASH");
+--INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (4,"SQLite3 Editor","https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor","Edit SQLite3 files like you would in spreadsheet applications.","https://yy0931.gallerycdn.vsassets.io/extensions/yy0931/vscode-sqlite3-editor/1.0.85/1690893830873/Microsoft.VisualStudio.Services.Icons.Default","SQL");
+--SELECT * FROM extension;
+--SELECT * FROM extension WHERE language LIKE '#BASH';
 
--- INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (X,"","","","",""); -- Insert template
+--DROP TABLE contact_list;
 
-INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (1,"Live Server","https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer","Launch a development local Server with live reload feature for static & dynamic pages","https://ritwickdey.gallerycdn.vsassets.io/extensions/ritwickdey/liveserver/5.7.9/1661914858952/Microsoft.VisualStudio.Services.Icons.Default","HTML CSS JS");
+--CREATE TABLE components(ID INTEGER NOT NULL PRIMARY KEY, Image_Link TEXT NOT NULL, Name TEXT NOT NULL, Complexity INTEGER NOT NULL, Obtainability INTEGER NOT NULL, Category TEXT NOT NULL);
+-- Power Components
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (1, '', 'Block of Redstone', 1, 2, 'Power Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (2, '', 'Button', 1, 1, 'Power Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (3, '', 'Calibrated Sculk Sensor', 3, 3, 'Power Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (4, '', 'Daylight Detector', 2, 2, 'Power Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (5, '', 'Detector Rail', 1, 2, 'Power Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (6, '', 'Jukebox', 2, 2, 'Power Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (7, '', 'Lectern', 2, 1, 'Power Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (8, '', 'Lever', 1, 1, 'Power Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (9, '', 'Lightning Rod', 1, 1, 'Power Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (10, '', 'Observer', 2, 2, 'Power Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (11, '', 'Pressure Plate', 1, 1, 'Power Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (12, '', 'Redstone Torch', 2, 1, 'Power Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (13, '', 'Sculk Sensor', 2, 3, 'Power Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (14, '', 'Target', 1, 1, 'Power Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (15, '', 'Trapped Chest', 1, 1, 'Power Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (16, '', 'Tripwire Hook', 2, 1, 'Power Component');
 
--- SELECT * FROM extension;
+-- Transmission Components
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (17, '', 'Redstone Dust', 2, 1, 'Transmission Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (18, '', 'Redstone Repeater', 2, 1, 'Transmission Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (19, '', 'Redstone Comparator', 4, 2, 'Transmission Component');
 
-INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (2,"Render CR LF","https://marketplace.visualstudio.com/items?itemName=medo64.render-crlf","Displays the line ending symbol and optionally extra whitespace when 'Render whitespace' is turned on.","https://medo64.gallerycdn.vsassets.io/extensions/medo64/render-crlf/1.7.1/1689315206970/Microsoft.VisualStudio.Services.Icons.Default","#BASH");
-INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (3,"Start GIT BASH","https://marketplace.visualstudio.com/items?itemName=McCarter.start-git-bash","Adds a bash command to VSCode that allows you to start git-bash in the current workspace's root folder.","https://mccarter.gallerycdn.vsassets.io/extensions/mccarter/start-git-bash/1.2.1/1499505567572/Microsoft.VisualStudio.Services.Icons.Default","#BASH");
+-- Mechanism Components
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (20, '', 'Activator Rail', 2, 2, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (21, '', 'Bell', 1, 2, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (22, '', 'Big Dripleaf', 2, 2, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (23, '', 'Copper Bulb', 2, 2, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (24, '', 'Crafter', 3, 2, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (25, '', 'Dispenser', 2, 2, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (26, '', 'Door', 1, 1, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (27, '', 'Dragon Head', 1, 4, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (28, '', 'Dropper', 2, 1, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (29, '', 'Fence Gate', 1, 1, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (30, '', 'Hopper', 3, 2, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (31, '', 'Note Block', 2, 1, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (32, '', 'Piglin Head', 1, 4, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (33, '', 'Piston', 2, 2, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (34, '', 'Powered Rail', 1, 2, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (35, '', 'Rail', 1, 1, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (36, '', 'Redstone Lamp', 1, 2, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (37, '', 'TNT', 1, 2, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (38, '', 'Trapdoor', 1, 1, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (39, '', 'Command Block', 4, 4, 'Mechanism Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (40, '', 'Structure Block', 3, 4, 'Mechanism Component');
 
-INSERT INTO extension(extID,name,hyperlink,about,image,language) VALUES (4,"SQLite3 Editor","https://marketplace.visualstudio.com/items?itemName=yy0931.vscode-sqlite3-editor","Edit SQLite3 files like you would in spreadsheet applications.","https://yy0931.gallerycdn.vsassets.io/extensions/yy0931/vscode-sqlite3-editor/1.0.85/1690893830873/Microsoft.VisualStudio.Services.Icons.Default","SQL");
-
--- SELECT * FROM extension;
-
--- SELECT * FROM extension WHERE language LIKE '#BASH';
-DROP TABLE contact_list
+-- Mobile Components
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (41, '', 'Boat with Chest', 1, 1, 'Mobile Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (42, '', 'Minecart', 1, 2, 'Mobile Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (43, '', 'Minecart with Hopper', 2, 2, 'Mobile Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (44, '', 'Minecart with Furnace', 2, 2, 'Mobile Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (45, '', 'Minecart with Chest', 1, 2, 'Mobile Component');
+INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (46, '', 'Minecart with TNT', 2, 2, 'Mobile Component');
