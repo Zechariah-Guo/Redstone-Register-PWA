@@ -13,55 +13,353 @@
 
 --CREATE TABLE components(ID INTEGER NOT NULL PRIMARY KEY, Image_Link TEXT NOT NULL, Name TEXT NOT NULL, Complexity INTEGER NOT NULL, Obtainability INTEGER NOT NULL, Category TEXT NOT NULL);
 -- Power Components
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (1, '', 'Block of Redstone', 1, 2, 'Power Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (2, '', 'Button', 1, 1, 'Power Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (3, '', 'Calibrated Sculk Sensor', 3, 3, 'Power Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (4, '', 'Daylight Detector', 2, 2, 'Power Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (5, '', 'Detector Rail', 1, 2, 'Power Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (6, '', 'Jukebox', 2, 2, 'Power Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (7, '', 'Lectern', 2, 1, 'Power Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (8, '', 'Lever', 1, 1, 'Power Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (9, '', 'Lightning Rod', 1, 1, 'Power Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (10, '', 'Observer', 2, 2, 'Power Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (11, '', 'Pressure Plate', 1, 1, 'Power Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (12, '', 'Redstone Torch', 2, 1, 'Power Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (13, '', 'Sculk Sensor', 2, 3, 'Power Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (14, '', 'Target', 1, 1, 'Power Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (15, '', 'Trapped Chest', 1, 1, 'Power Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (16, '', 'Tripwire Hook', 2, 1, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (1, '', 'Block of Redstone', 1, 2, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (2, '', 'Button', 1, 1, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (3, '', 'Calibrated Sculk Sensor', 3, 3, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (4, '', 'Daylight Detector', 2, 2, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (5, '', 'Detector Rail', 1, 2, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (6, '', 'Jukebox', 2, 2, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (7, '', 'Lectern', 2, 1, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (8, '', 'Lever', 1, 1, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (9, '', 'Lightning Rod', 1, 1, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (10, '', 'Observer', 2, 2, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (11, '', 'Pressure Plate', 1, 1, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (12, '', 'Redstone Torch', 2, 1, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (13, '', 'Sculk Sensor', 2, 3, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (14, '', 'Target', 1, 1, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (15, '', 'Trapped Chest', 1, 1, 'Power Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (16, '', 'Tripwire Hook', 2, 1, 'Power Component');
 
 -- Transmission Components
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (17, '', 'Redstone Dust', 2, 1, 'Transmission Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (18, '', 'Redstone Repeater', 2, 1, 'Transmission Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (19, '', 'Redstone Comparator', 4, 2, 'Transmission Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (17, '', 'Redstone Dust', 2, 1, 'Transmission Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (18, '', 'Redstone Repeater', 2, 1, 'Transmission Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (19, '', 'Redstone Comparator', 4, 2, 'Transmission Component');
 
 -- Mechanism Components
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (20, '', 'Activator Rail', 2, 2, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (21, '', 'Bell', 1, 2, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (22, '', 'Big Dripleaf', 2, 2, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (23, '', 'Copper Bulb', 2, 2, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (24, '', 'Crafter', 3, 2, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (25, '', 'Dispenser', 2, 2, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (26, '', 'Door', 1, 1, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (27, '', 'Dragon Head', 1, 4, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (28, '', 'Dropper', 2, 1, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (29, '', 'Fence Gate', 1, 1, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (30, '', 'Hopper', 3, 2, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (31, '', 'Note Block', 2, 1, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (32, '', 'Piglin Head', 1, 4, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (33, '', 'Piston', 2, 2, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (34, '', 'Powered Rail', 1, 2, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (35, '', 'Rail', 1, 1, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (36, '', 'Redstone Lamp', 1, 2, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (37, '', 'TNT', 1, 2, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (38, '', 'Trapdoor', 1, 1, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (39, '', 'Command Block', 4, 4, 'Mechanism Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (40, '', 'Structure Block', 3, 4, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (20, '', 'Activator Rail', 2, 2, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (21, '', 'Bell', 1, 2, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (22, '', 'Big Dripleaf', 2, 2, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (23, '', 'Copper Bulb', 2, 2, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (24, '', 'Crafter', 3, 2, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (25, '', 'Dispenser', 2, 2, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (26, '', 'Door', 1, 1, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (27, '', 'Dragon Head', 1, 4, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (28, '', 'Dropper', 2, 1, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (29, '', 'Fence Gate', 1, 1, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (30, '', 'Hopper', 3, 2, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (31, '', 'Note Block', 2, 1, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (32, '', 'Piglin Head', 1, 4, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (33, '', 'Piston', 2, 2, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (34, '', 'Powered Rail', 1, 2, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (35, '', 'Rail', 1, 1, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (36, '', 'Redstone Lamp', 1, 2, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (37, '', 'TNT', 1, 2, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (38, '', 'Trapdoor', 1, 1, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (39, '', 'Command Block', 4, 4, 'Mechanism Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (40, '', 'Structure Block', 3, 4, 'Mechanism Component');
 
 -- Mobile Components
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (41, '', 'Boat with Chest', 1, 1, 'Mobile Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (42, '', 'Minecart', 1, 2, 'Mobile Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (43, '', 'Minecart with Hopper', 2, 2, 'Mobile Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (44, '', 'Minecart with Furnace', 2, 2, 'Mobile Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (45, '', 'Minecart with Chest', 1, 2, 'Mobile Component');
-INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (46, '', 'Minecart with TNT', 2, 2, 'Mobile Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (41, '', 'Boat with Chest', 1, 1, 'Mobile Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (42, '', 'Minecart', 1, 2, 'Mobile Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (43, '', 'Minecart with Hopper', 2, 2, 'Mobile Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (44, '', 'Minecart with Furnace', 2, 2, 'Mobile Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (45, '', 'Minecart with Chest', 1, 2, 'Mobile Component');
+--INSERT INTO components (ID, Image_Link, Name, Complexity, Obtainability, Category) VALUES (46, '', 'Minecart with TNT', 2, 2, 'Mobile Component');
+
+--ALTER TABLE components ADD COLUMN wiki_link TEXT [ NOT NULL];
+--ALTER TABLE components ADD COLUMN short_description TEXT [ NOT NULL];
+--ALTER TABLE components ADD COLUMN short_usage TEXT [ NOT NULL];
+
+-- Power Components
+--UPDATE components 
+--SET short_description = 'A Block of Redstone is a solid, movable block crafted from nine redstone dust. It acts as a highly reliable, constant power source that cannot be turned off or burned out like a redstone torch.', 
+--    short_usage = 'It emits a maximum redstone signal of 15 to all adjacent blocks. Because it can be pushed and pulled by pistons without breaking, it is a core component in flying machines and movable logic circuits.' 
+--WHERE Name = 'Block of Redstone';
+
+--UPDATE components 
+--SET short_description = 'A button is a simple wall or floor-mounted switch that comes in various wood types or stone. It is one of the most basic and common ways for players to manually interact with a redstone circuit.', 
+--    short_usage = 'When pressed, it provides a temporary pulse of redstone power to adjacent blocks before automatically turning itself off. Wooden buttons stay pressed slightly longer than stone buttons and can be triggered by arrows or tridents.' 
+--WHERE Name = 'Button';
+
+--UPDATE components 
+--SET short_description = 'The calibrated sculk sensor is an advanced variant of the standard sculk sensor, crafted using amethyst shards. It allows for highly specific, interference-free wireless redstone communication.', 
+--    short_usage = 'It detects vibrations just like a normal sensor, but it has a dedicated slot that can be powered by a redstone signal. By changing the input signal strength, players can filter the sensor to only activate upon hearing specific sounds.' 
+--WHERE Name = 'Calibrated Sculk Sensor';
+
+--UPDATE components 
+--SET short_description = 'The daylight detector is a low-profile sensor block that reads the current light levels from the sky. It is essentially a solar panel for Minecraft, allowing circuits to react to the time of day or weather conditions.', 
+--    short_usage = 'It outputs a redstone signal whose strength corresponds directly to the sun or moon position. Players can right-click the detector to invert its function, turning it into a moonlight detector that powers up as the environment gets darker.' 
+--WHERE Name = 'Daylight Detector';
+
+--UPDATE components 
+--SET short_description = 'The detector rail is a specialized track piece equipped with a pressure plate built into its center. It serves as the primary way to integrate minecart networks with adjacent redstone machinery.', 
+--    short_usage = 'When any type of minecart passes over or rests on this rail, it emits a redstone signal to the blocks next to and below it. This is frequently used to trigger powered rails ahead, open automated doors, or activate hoppers.' 
+--WHERE Name = 'Detector Rail';
+
+--UPDATE components 
+--SET short_description = 'A jukebox is a wooden block topped with diamond that is used to play music discs found throughout the world. While primarily decorative and auditory, it also has specific redstone properties.', 
+--    short_usage = 'It emits a redstone signal while a music disc is actively playing inside it. Additionally, if a redstone comparator is placed reading the jukebox, it will output a specific signal strength corresponding to the exact music disc that is currently inserted.' 
+--WHERE Name = 'Jukebox';
+
+--UPDATE components 
+--SET short_description = 'The lectern is a wooden stand designed to hold written or writable books, allowing multiple players to read the same book at once. It also functions as a unique, variable redstone power source.', 
+--    short_usage = 'When a book is placed on the lectern, it emits a redstone pulse every time a player turns the page. If a comparator reads the lectern, it outputs a continuous signal strength that increases proportionally depending on which page the reader is currently viewing.' 
+--WHERE Name = 'Lectern';
+
+--UPDATE components 
+--SET short_description = 'A lever is a simple, craftable switch made from cobblestone and a stick that can be placed on almost any solid surface. It provides a permanent, manual toggle for redstone circuits.', 
+--    short_usage = 'Interacting with the lever flips it up or down, turning its redstone signal either completely on or completely off. It will maintain this state indefinitely until a player interacts with it again, making it perfect for locking doors or keeping machines running.' 
+--WHERE Name = 'Lever';
+
+--UPDATE components 
+--SET short_description = 'Made entirely of copper, the lightning rod is designed to protect flammable buildings by attracting lightning strikes during thunderstorms. It covers a spherical radius, redirecting strikes that would have otherwise hit nearby blocks.', 
+--    short_usage = 'Upon being struck by lightning, the rod instantly emits a maximum-strength redstone pulse. This allows builders to create highly specific, weather-dependent contraptions or safely harness the energy of a storm without risking fires.' 
+--WHERE Name = 'Lightning Rod';
+
+--UPDATE components 
+--SET short_description = 'The observer is a directional block featuring a face on one side and a redstone output on the other. It is an essential component for modern automation, acting as the primary way to detect block updates.', 
+--    short_usage = 'Whenever the block directly in front of the observer face changes its state, it detects this change. It then immediately fires a brief, strong redstone pulse out of its back to trigger attached machinery like pistons or dispensers.' 
+--WHERE Name = 'Observer';
+
+--UPDATE components 
+--SET short_description = 'Pressure plates are flat, floor-mounted triggers available in wood, stone, gold, and iron variants. They are designed to detect the physical presence of entities standing on top of them.', 
+--    short_usage = 'When stepped on by a player or mob, the plate is pushed down and emits a redstone signal. Wooden plates can detect dropped items, while the gold and iron variants output a signal strength based on the total number of entities standing on them.' 
+--WHERE Name = 'Pressure Plate';
+
+--UPDATE components 
+--SET short_description = 'A redstone torch looks like a regular torch but glows with a dim red light and provides no meaningful illumination. It is one of the foundational logic components in the game, acting as both a power source and an inverter.', 
+--    short_usage = 'By default, it provides constant power to adjacent blocks and dust. However, if the solid block the torch is attached to receives its own redstone power, the torch will turn off, which is the core mechanic behind building NOT gates.' 
+--WHERE Name = 'Redstone Torch';
+
+--UPDATE components 
+--SET short_description = 'Found naturally in the Deep Dark biome, the sculk sensor is a bizarre, organic block that detects acoustic vibrations in its vicinity. It brought wireless redstone to Minecraft by reacting to sound rather than physical connections.', 
+--    short_usage = 'When a player or mob makes noise like walking or placing a block, the sensor picks up the vibration and emits a redstone signal. The strength of the signal it outputs is inversely proportional to how far away the sound originated.' 
+--WHERE Name = 'Sculk Sensor';
+
+--UPDATE components 
+--SET short_description = 'The target block is crafted from hay bales and redstone, resembling a classic archery bullseye. It acts as a specialized switch that bridges the gap between ranged combat and redstone engineering.', 
+--    short_usage = 'It temporarily emits a redstone pulse when struck by any projectile, including arrows, tridents, snowballs, and eggs. The exact strength of the redstone signal it outputs depends entirely on how close the projectile landed to the absolute center of the bullseye.' 
+--WHERE Name = 'Target';
+
+--UPDATE components 
+--SET short_description = 'Visually nearly identical to a standard storage chest, the trapped chest features a subtle red ring around its latch. It is specifically designed to create traps or trigger hidden mechanisms when players attempt to loot it.', 
+--    short_usage = 'Whenever a player opens the trapped chest inventory interface, the block emits a redstone signal. This signal is relatively weak but can be easily amplified with a repeater to set off TNT, drop the floor, or trigger alarms.' 
+--WHERE Name = 'Trapped Chest';
+
+--UPDATE components 
+--SET short_description = 'Tripwire hooks are wall-mounted anchors that must be used in pairs and connected by string to function. They are excellent for creating wide, nearly invisible detection zones across hallways or jungle paths.', 
+--    short_usage = 'When any entity, such as a player or zombie, walks through the connected string, both hooks are pulled down and emit a redstone signal. This makes them perfect for triggering arrow dispensers, trapdoors, or lighting systems as someone enters a room.' 
+--WHERE Name = 'Tripwire Hook';
+
+-- Transmission Components
+--UPDATE components 
+--SET short_description = 'Redstone dust acts as the primary electrical wiring of the Minecraft world, able to be placed flat on top of solid blocks. It connects together to form lines that can transmit power across long distances.', 
+--    short_usage = 'When powered by a source, the dust turns bright red and carries the signal up to fifteen blocks away before the power runs out. It can be routed up and down steps, but it will lose one level of signal strength for every block it travels.' 
+--WHERE Name = 'Redstone Dust';
+
+--UPDATE components 
+--SET short_description = 'The redstone repeater is a directional utility block that serves two primary functions in circuitry. It acts as an amplifier to extend redstone signals, and as a timer to precisely delay when a signal activates.', 
+--    short_usage = 'When a signal enters the back of a repeater, it outputs a fresh, maximum-strength signal of 15 out the front, resetting the distance the wire can travel. Players can also interact with it to add up to four ticks of delay, making it vital for timing mechanisms.' 
+--WHERE Name = 'Redstone Repeater';
+
+--UPDATE components 
+--SET short_description = 'The redstone comparator is arguably the most complex logic block in the game. It is used to compare multiple signal strengths against each other or to measure the contents of containers like chests and hoppers.', 
+--    short_usage = 'In compare mode, it only lets a signal pass through if the rear input is stronger than the side inputs. It can also be placed facing away from a storage block to output a signal strength directly proportional to how full the container is.' 
+--WHERE Name = 'Redstone Comparator';
+
+-- Mechanism Components
+--UPDATE components 
+--SET short_description = 'The activator rail is a special utility track that is used to interact with the contents of minecarts rather than changing their speed. It is a niche but powerful tool for automated transport systems.', 
+--    short_usage = 'When powered by redstone, this rail will forcefully eject entities riding in standard minecarts. It will also ignite TNT minecarts that pass over it and lock hopper minecarts from picking up any further items.' 
+--WHERE Name = 'Activator Rail';
+
+--UPDATE components 
+--SET short_description = 'Bells are golden, resonant blocks typically found serving as the gathering point in naturally generated villages. They act as an alarm system for villagers to warn them of impending danger.', 
+--    short_usage = 'When struck by a player, hit by a projectile, or powered by a redstone signal, the bell will swing and produce a loud ringing sound. In a village, ringing the bell will cause all nearby villagers to immediately run into their houses for safety.' 
+--WHERE Name = 'Bell';
+
+--UPDATE components 
+--SET short_description = 'Big Dripleaf is a unique flora found in lush caves that features a wide, flat top. It serves as a natural platforming element that responds to weight and redstone interactions.', 
+--    short_usage = 'When an entity stands on top of the leaf, it will slowly tilt downward until the entity slips off, before resetting its position. However, if the stem is powered by redstone, the leaf will lock in a rigid, flat position and refuse to collapse.' 
+--WHERE Name = 'Big Dripleaf';
+
+--UPDATE components 
+--SET short_description = 'The copper bulb is a craftable light source that brings a built-in memory function to redstone engineering. Unlike normal lamps, its appearance and light level change as it oxidizes over time.', 
+--    short_usage = 'It acts as an intrinsic T-flip flop, meaning one redstone pulse will turn the light on permanently, and a second separate pulse will turn it off. This eliminates the need to build bulky, complex redstone circuits just to toggle a light switch.' 
+--WHERE Name = 'Copper Bulb';
+
+--UPDATE components 
+--SET short_description = 'The crafter is a revolutionary block that brings automated item manufacturing into vanilla Minecraft. It features an internal three by three grid that mimics a standard crafting table.', 
+--    short_usage = 'Players can use hoppers to feed raw materials into the crafter grid, and individual slots can be disabled to force specific recipes. Once the correct items are in place, a redstone pulse will cause the crafter to forge the item and spit it out into the world.' 
+--WHERE Name = 'Crafter';
+
+--UPDATE components 
+--SET short_description = 'The dispenser is a directional utility block containing an inventory of nine slots. Unlike a dropper, the dispenser is designed to actively use the items inside it rather than just throwing them on the floor.', 
+--    short_usage = 'When powered by redstone, it will shoot arrows, deploy water or lava buckets, equip armor onto nearby players, or spawn mobs from eggs. It is a fundamental component for building automated farms and defensive traps.' 
+--WHERE Name = 'Dispenser';
+
+--UPDATE components 
+--SET short_description = 'Doors are basic, two-block tall barriers used to block entryways to buildings or rooms. While wooden doors can be opened by hand, iron doors are heavily reinforced and require machinery to operate.', 
+--    short_usage = 'When a door receives a redstone signal from a button, lever, or pressure plate, it will swing open immediately. Once the power source is removed, the door will automatically close, making them perfect for creating secure, automated entrances.' 
+--WHERE Name = 'Door';
+
+--UPDATE components 
+--SET short_description = 'The Dragon Head is a rare, decorative trophy block found exclusively at the front of End Ships in the End dimension. It serves as a flex of late-game achievement but also has a neat interaction with circuitry.', 
+--    short_usage = 'When the dragon head is placed on a block that receives redstone power, its jaw will continuously snap open and shut. This is often used by builders to create creepy statues or moving elements in adventure maps.' 
+--WHERE Name = 'Dragon Head';
+
+--UPDATE components 
+--SET short_description = 'The dropper is a directional container block that looks very similar to a dispenser but has a much simpler function. It is primarily used for moving items vertically or ejecting garbage into lava.', 
+--    short_usage = 'When powered, the dropper will spit one random item from its inventory out into the world as a dropped entity. If the dropper is directly facing another container like a chest or hopper, it will silently push the item directly into that inventory instead.' 
+--WHERE Name = 'Dropper';
+
+--UPDATE components 
+--SET short_description = 'A fence gate is a wooden barrier designed to seamlessly integrate with fence lines while allowing players to pass through. It provides the security of a fence without the need to jump over it.', 
+--    short_usage = 'Gates can be opened and closed manually by the player, but they also respond to redstone signals. When powered, the gate will swing open, making them useful for creating animal pens that can be unlocked via a central lever.' 
+--WHERE Name = 'Fence Gate';
+
+--UPDATE components 
+--SET short_description = 'The hopper is a funnel-shaped block essential for automated item collection and transfer. It features a small five-slot inventory and a spout at the bottom that points into whatever block it was placed against.', 
+--    short_usage = 'It actively pulls items from containers directly above it and sucks up loose items resting on top of it, then pushes those items into the container its spout faces. However, if the hopper receives a redstone signal, it locks up and stops transferring items entirely.' 
+--WHERE Name = 'Hopper';
+
+--UPDATE components 
+--SET short_description = 'Note blocks are musical instruments that allow players to create original songs and sound effects in the game. They are constructed from wood and redstone dust.', 
+--    short_usage = 'When powered by a redstone pulse, the block emits a single musical note. The pitch of the note is changed by right-clicking the block, and the specific instrument it sounds like changes depending on the type of block placed directly beneath it.' 
+--WHERE Name = 'Note Block';
+
+--UPDATE components 
+--SET short_description = 'The Piglin Head is a rare mob head obtained by forcing a charged creeper to explode near a Piglin in the Nether. It is a unique decorative block that retains some lifelike qualities.', 
+--    short_usage = 'Similar to the Dragon Head, the Piglin Head reacts to redstone power. When the block it rests on is powered, the Piglins large ears will flap back and forth continuously.' 
+--WHERE Name = 'Piglin Head';
+
+--UPDATE components 
+--SET short_description = 'Pistons are mechanical blocks capable of pushing other solid blocks, entities, and items in a straight line. There are normal pistons that only push, and sticky pistons that can pull a block back when they retract.', 
+--    short_usage = 'When powered by redstone, the piston head extends outward by one block, shoving anything in its path. They are the driving force behind hidden doors, automated harvesting systems, and complex flying machines.' 
+--WHERE Name = 'Piston';
+
+--UPDATE components 
+--SET short_description = 'Powered rails are golden tracks that act as the engines of the minecart transport system. Without them, minecarts would eventually lose momentum and grind to a halt on flat ground.', 
+--    short_usage = 'When these rails are powered by redstone, they heavily accelerate any minecart that passes over them. If a powered rail is left unpowered, it acts as a strong brake, rapidly slowing the minecart down until it stops entirely.' 
+--WHERE Name = 'Powered Rail';
+
+--UPDATE components 
+--SET short_description = 'Standard rails are the base tracks used to guide minecarts across the world. They can be placed on flat ground or along slopes to create functional railways through mines or between bases.', 
+--    short_usage = 'While they do not provide any momentum on their own, standard rails can turn corners and intersect. Redstone power is only used to switch the direction of a curved rail intersection, acting like a railway switch track.' 
+--WHERE Name = 'Rail';
+
+--UPDATE components 
+--SET short_description = 'The redstone lamp is a clean, modern-looking light source crafted from glowstone and redstone dust. It is highly favored by builders for its predictable behavior and aesthetic appeal.', 
+--    short_usage = 'Unlike regular glowstone, the redstone lamp requires an active redstone signal to turn on and emit light. The moment the power is cut, the lamp turns completely dark, making it the perfect block for creating streetlights and indoor lighting systems.' 
+--WHERE Name = 'Redstone Lamp';
+
+--UPDATE components 
+--SET short_description = 'TNT is a highly destructive explosive block crafted from sand and gunpowder. It is primarily used for rapid mining, terraforming, or constructing deadly traps.', 
+--    short_usage = 'When triggered by fire, a flint and steel, or any redstone signal, the TNT block becomes a primed, white-flashing entity subject to gravity. After a short delay, it violently explodes, destroying surrounding blocks and dealing massive damage to entities.' 
+--WHERE Name = 'TNT';
+
+--UPDATE components 
+--SET short_description = 'Trapdoors are horizontal barriers that take up very little space and sit flush with the floor or ceiling. They are useful for covering ladders, creating drop shafts, or adding detail to builds.', 
+--    short_usage = 'Like standard doors, trapdoors will flip open on a hinge when they receive a redstone signal, allowing players or items to fall through. Iron trapdoors cannot be opened by hand and absolutely require redstone power to operate.' 
+--WHERE Name = 'Trapdoor';
+
+--UPDATE components 
+--SET short_description = 'The command block is an incredibly powerful, programmable block that can only be obtained and edited by server admins in creative mode. It is the backbone of custom adventure maps and mini-games.', 
+--    short_usage = 'It can execute complex console commands, such as teleporting players, spawning items, or altering the weather, whenever it receives a redstone pulse. It cannot be used in standard survival gameplay to prevent cheating and world corruption.' 
+--WHERE Name = 'Command Block';
+
+--UPDATE components 
+--SET short_description = 'The structure block is a specialized tool used by mapmakers and developers to copy and paste chunks of the world. Like the command block, it is completely inaccessible in standard survival mode.', 
+--    short_usage = 'It allows users to highlight a 3D area of blocks and save it to a file, which can then be loaded elsewhere in the world. Redstone signals can be used to trigger the block to instantly load or save the designated structure without manual input.' 
+--WHERE Name = 'Structure Block';
+
+-- Mobile Components
+--UPDATE components 
+--SET short_description = 'The boat with a chest is a vital exploration tool for the early game, combining a standard wooden boat with a storage container. It allows players to transport a large amount of loot across oceans and rivers.', 
+--    short_usage = 'A single player can row the boat while the back seat is occupied by the chest. Players can access the inventory of the chest while riding the boat, making it perfect for long journeys or moving items between coastal bases.' 
+--WHERE Name = 'Boat with Chest';
+
+--UPDATE components 
+--SET short_description = 'The minecart is a heavy iron vehicle designed to ride smoothly along rail networks. It is the original and most basic form of automated transport in the game.', 
+--    short_usage = 'Players and mobs can right-click to sit inside the minecart and ride it along the tracks. It requires sloped rails, powered rails, or a furnace minecart to gain and maintain momentum over long distances.' 
+--WHERE Name = 'Minecart';
+
+--UPDATE components 
+--SET short_description = 'The minecart with hopper combines the mobility of a cart with the item-sucking power of a hopper. It is a staple in large-scale automated farms for collecting drops scattered across a wide area.', 
+--    short_usage = 'As it rolls along the tracks, it will instantly vacuum up any loose items resting on the rails or on the blocks directly above the rails. It pulls items significantly faster than a stationary hopper, making it highly efficient for rapid collection.' 
+--WHERE Name = 'Minecart with Hopper';
+
+--UPDATE components 
+--SET short_description = 'The minecart with furnace is essentially a miniature, coal-powered locomotive. It is largely considered a legacy feature, but it still holds niche uses for moving trains without gold.', 
+--    short_usage = 'Players can power the cart by right-clicking it with a piece of coal or charcoal, causing it to chug forward under its own power. It will forcefully push any other minecarts in front of it, acting as a train engine along standard rails.' 
+--WHERE Name = 'Minecart with Furnace';
+
+--UPDATE components 
+--SET short_description = 'The minecart with chest provides mobile storage that can be sent hurtling down a rail line unattended. It is perfect for sending mined ores back up to the surface without having to walk back yourself.', 
+--    short_usage = 'It holds the exact same amount of inventory as a standard single chest. It interacts perfectly with stationary hoppers, allowing automated systems to load it with items at one station and empty it upon arrival at another.' 
+--WHERE Name = 'Minecart with Chest';
+
+--UPDATE components 
+--SET short_description = 'The minecart with TNT is a rolling explosive device designed for targeted destruction. It is highly volatile and is frequently used for rapid tunnel boring or creating devastating traps along railways.', 
+--    short_usage = 'It can be ignited by passing over an active activator rail, at which point it will explode after a short fuse. However, it will also detonate instantly if it derails, falls a significant distance, or crashes into a solid block at high speeds.' 
+--WHERE Name = 'Minecart with TNT';
+
+-- Power Components
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Redstone_Block_recipe.png' WHERE Name = 'Block of Redstone';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Button_recipe.png' WHERE Name = 'Button';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Calibrated_Sculk_Sensor_recipe.png' WHERE Name = 'Calibrated Sculk Sensor';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Daylight_Detector_recipe.png' WHERE Name = 'Daylight Detector';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Detector_Rail_recipe.png' WHERE Name = 'Detector Rail';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Jukebox_recipe.png' WHERE Name = 'Jukebox';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Lectern_recipe.png' WHERE Name = 'Lectern';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Lever_recipe.png' WHERE Name = 'Lever';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Lightning_Rod_recipe.png' WHERE Name = 'Lightning Rod';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Observer_recipe.png' WHERE Name = 'Observer';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Pressure_Plate_recipe.png' WHERE Name = 'Pressure Plate';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Redstone_Torch_recipe.png' WHERE Name = 'Redstone Torch';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Target_recipe.png' WHERE Name = 'Target';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Trapped_Chest_recipe.png' WHERE Name = 'Trapped Chest';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Tripwire_Hook_recipe.png' WHERE Name = 'Tripwire Hook';
+
+-- Transmission Components
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Redstone_Repeater_recipe.png' WHERE Name = 'Redstone Repeater';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Redstone_Comparator_recipe.png' WHERE Name = 'Redstone Comparator';
+
+-- Mechanism Components
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Activator_Rail_recipe.png' WHERE Name = 'Activator Rail';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Copper_Bulb_recipe.png' WHERE Name = 'Copper Bulb';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Crafter_recipe.png' WHERE Name = 'Crafter';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Dispenser_recipe.png' WHERE Name = 'Dispenser';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Door_recipe.png' WHERE Name = 'Door';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Dropper_recipe.png' WHERE Name = 'Dropper';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Fence_Gate_recipe.png' WHERE Name = 'Fence Gate';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Hopper_recipe.png' WHERE Name = 'Hopper';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Note_Block_recipe.png' WHERE Name = 'Note Block';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Piston_recipe.png' WHERE Name = 'Piston';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Powered_Rail_recipe.png' WHERE Name = 'Powered Rail';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Rail_recipe.png' WHERE Name = 'Rail';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Redstone_Lamp_recipe.png' WHERE Name = 'Redstone Lamp';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/TNT_recipe.png' WHERE Name = 'TNT';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Trapdoor_recipe.png' WHERE Name = 'Trapdoor';
+
+-- Mobile Components
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Boat_with_Chest_recipe.png' WHERE Name = 'Boat with Chest';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Minecart_recipe.png' WHERE Name = 'Minecart';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Minecart_with_Hopper_recipe.png' WHERE Name = 'Minecart with Hopper';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Minecart_with_Furnace_recipe.png' WHERE Name = 'Minecart with Furnace';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Minecart_with_Chest_recipe.png' WHERE Name = 'Minecart with Chest';
+UPDATE components SET crafting_recipe = '../static/images/Recipes/Minecart_with_TNT_recipe.png' WHERE Name = 'Minecart with TNT';
+
+-- Non-Craftable Components (Not Applicable)
+UPDATE components 
+SET crafting_recipe = '../static/images/Recipes/Not_Applicable_Recipe.png' 
+WHERE Name IN (
+    'Sculk Sensor', 
+    'Redstone Dust', 
+    'Bell', 
+    'Big Dripleaf', 
+    'Dragon Head', 
+    'Piglin Head', 
+    'Command Block', 
+    'Structure Block'
+);

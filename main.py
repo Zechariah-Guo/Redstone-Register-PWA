@@ -9,7 +9,7 @@ app = Flask(__name__)
 @app.route("/index.html", methods=["GET"])
 @app.route("/", methods=["POST", "GET"])
 def index():
-    return render_template("/index.html", content=dbHandler.listExtension())
+    return render_template("/index.html", content=dbHandler.listComponents())
 
 
 @app.route("/add.html", methods=["POST", "GET"])

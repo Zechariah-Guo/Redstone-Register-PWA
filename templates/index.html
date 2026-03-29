@@ -17,12 +17,33 @@
 
     <div class="container">
         {% for row in content %}
+            {% set complexity_level = row[3] | int %}
+            {% set obtainability_level = row[4] | int %}
             <div class="card">
-                <img class="card-image" src='{{ row[4] }}' alt="Product image for the {{ row[1] }} VSCode extension.">
-                <h1 class="card-name">{{ row[1] }}</h1>
-                <p class="card-about">{{ row[3] }}</p>
-                <a class="card-link" href="{{ row[2] }}"><button class="btn">Read More</button></a>
-            </div> 
+                <img class="card-image" src='{{ row[1] }}' alt="Image for the {{ row[1] }} component.">
+                <h1 class="card-name">{{ row[2] }}</h1>
+
+                <div class="rating-block" aria-label="Complexity level {{ complexity_level }} out of 4">
+                    <span class="rating-label">Complexity</span>
+                    <div class="rating-bar level-{{ complexity_level }}">
+                        {% for segment in range(1, 5) %}
+                            <span class="rating-segment{% if segment <= complexity_level %} is-filled{% endif %}"></span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="rating-block" aria-label="Obtainability level {{ obtainability_level }} out of 4">
+                    <span class="rating-label">Obtainability</span>
+                    <div class="rating-bar level-{{ obtainability_level }}">
+                        {% for segment in range(1, 5) %}
+                            <span class="rating-segment{% if segment <= obtainability_level %} is-filled{% endif %}"></span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div>
+                    <a href=""><button class="expandbutton">Expand</button></a>
+                </div>
+            </div>
         {% endfor %} 
     </div>
 {% endblock %}
