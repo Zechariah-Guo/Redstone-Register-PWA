@@ -1,10 +1,12 @@
 <nav id="navbar">
-    <script src="../static/js/script.js" defer></script>
-    <a href="/"><img src="{{ url_for('static', filename='images/logo.png')}}" alt="Redstone Register site logo." /></a>
+    <a id="nav-logo-link" href="/"><img src="{{ url_for('static', filename='images/logo.png')}}" alt="Redstone Register site logo." /></a>
     <input class="navbarsearch hidden" id="navbarsearch" placeholder="Search...">
-    <ul class="topnav">
+    <button id="nav-burger" class="nav-burger hidden" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
+        <img class="nav-burger-icon" src="https://cdn-icons-png.flaticon.com/512/12314/12314153.png" alt="" aria-hidden="true">
+    </button>
+    <ul class="topnav" id="nav-links">
         <li><a href="/">Home</a></li>
-        <li><a href="add.html">Add me</a></li>
+        <li><a href="faq.html">FAQs</a></li>
         <li><a href="about.html">About</a></li>
     </ul>
 </nav>
