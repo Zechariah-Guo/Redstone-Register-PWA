@@ -12,10 +12,13 @@
     
 </head>
 <body>
-    <main>   
-    {% include "partials/menu.html" %} 
-    {% block content %}{% endblock %}
-    </main>
+    <div class="site-shell">
+        <main>
+        {% include "partials/menu.html" %}
+        {% block content %}{% endblock %}
+        </main>
+        {% block page_footer %}{% endblock %}
+    </div>
     <script src="static/js/app.js"></script>
 </body>
 </html>

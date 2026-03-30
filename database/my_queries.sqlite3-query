@@ -363,3 +363,5 @@ WHERE Name IN (
     'Command Block', 
     'Structure Block'
 );
+
+DROP TABLE IF EXISTS extension;

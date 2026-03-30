@@ -1,5 +1,6 @@
 {% extends 'layout.html' %}
 {% block content %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=search" />
     <section class="catalogue-panel" aria-label="Catalogue overview">
         <section class="introduction-panel">
             <h1 class="intro-heading">
@@ -12,7 +13,7 @@
     </section>
     <div class="catalogue-toolbar">
         <div class="search-wrap">
-            <input placeholder="Search..." class="searchinput" id="searchbar" aria-label="Search components by name">
+            <input placeholder="🔍 Search..." class="searchinput" id="searchbar" aria-label="Search components by name" value="{{ search_query | default('', true) | e }}">
             <button type="button" class="search-clear hidden" id="search-clear" aria-label="Clear search">x</button>
         </div>
 
@@ -223,4 +224,9 @@
     <button type="button" id="jump-top" class="jump-top hidden" aria-label="Jump to top">^</button>
 
     <script src="static/js/script.js"></script>
+
+{% endblock %}
+
+{% block page_footer %}
+    {% include "partials/footer.html" %}
 {% endblock %}

@@ -6,9 +6,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const searchinput = document.getElementById("searchbar"); 
     const navbarSearchInput = document.getElementById("navbarsearch");
+    const navsearchClearButton = document.getElementById("nav-search-clear");
     const jumpTopButton = document.getElementById("jump-top");
 
     let showFloatingSearchFromScroll = false;
+
+    function syncNavSearchClearVisibility() {
+        if (!navsearchClearButton || !navbarSearchInput) {
+            return;
+        }
+
+        const hasText = navbarSearchInput.value.trim().length > 0;
+        const inputHidden = navbarSearchInput.classList.contains("hidden");
+        navsearchClearButton.classList.toggle("hidden", inputHidden || !hasText);
+    }
 
     const refreshFloatingControls = () => {
         if (!navbarSearchInput) {
@@ -22,12 +33,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (jumpTopButton) {
                 jumpTopButton.classList.add("hidden");
             }
+            syncNavSearchClearVisibility();
             return;
         }
 
         const keepVisibleForFocus = document.activeElement === navbarSearchInput;
         const showNavbarSearch = showFloatingSearchFromScroll || keepVisibleForFocus;
         navbarSearchInput.classList.toggle("hidden", !showNavbarSearch);
+        syncNavSearchClearVisibility();
 
         if (jumpTopButton) {
             jumpTopButton.classList.toggle("hidden", !showFloatingSearchFromScroll);
@@ -127,6 +140,10 @@ document.addEventListener('DOMContentLoaded', () => {
         searchClearButton.classList.toggle("hidden", state.searchText.length === 0);
     };
 
+    const updateNavSearchClearVisibility = () => {
+        syncNavSearchClearVisibility();
+    };
+
     // Keep track of which card opened the modal so focus can be restored on close.
     let lastFocusedCard = null;
 
@@ -198,6 +215,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         updateClearFiltersVisibility();
         updateSearchClearVisibility();
+        updateNavSearchClearVisibility();
     };
 
     const applySearchText = (rawValue) => {
@@ -329,6 +347,13 @@ document.addEventListener('DOMContentLoaded', () => {
         searchClearButton.addEventListener("click", () => {
             applySearchText("");
             searchinput.focus();
+        });
+    }
+
+    if (navsearchClearButton && navbarSearchInput) {
+        navsearchClearButton.addEventListener("click", () => {
+            applySearchText("");
+            navbarSearchInput.focus();
         });
     }
 
