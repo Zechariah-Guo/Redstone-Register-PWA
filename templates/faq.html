@@ -62,8 +62,16 @@
 
     <script src="static/js/faq.js"></script>
 
-{% endblock %}
+    <footer class="site-footer" aria-label="Footer">
+        <div class="site-footer-inner">
+            <img class="site-footer-logo" src="static/images/logo.png" alt="Redstone Register logo.">
+            <p class="site-footer-copy">©2026 Redstone Register</p>
+            <ul class="site-footer-pages" aria-label="Pages">
+                <li><a href="/">Home</a></li>
+                <li><a href="faq.html">FAQs</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </div>
+    </footer>
 
-{% block page_footer %}
-    {% include "partials/footer.html" %}
 {% endblock %}

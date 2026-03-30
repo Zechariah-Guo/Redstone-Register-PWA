@@ -14,7 +14,8 @@ body {
 
 .site-shell {
     min-height: 100vh;
-    display: block;
+    display: flex;
+    flex-direction: column;
 }
 
 html,
@@ -32,6 +33,7 @@ main {
     margin: 0;
     text-align: left;
     width: 100%;
+    flex: 1 1 auto;
 }
 nav {
     display: flex;
@@ -1016,8 +1018,7 @@ nav img:hover {
 
 .site-footer {
     position: static;
-    clear: both;
-    margin-top: 1rem;
+    margin-top: auto;
     padding: 1rem;
     border-top: 2px solid rgba(30, 30, 30, 0.4);
     background: rgb(118, 118, 118);

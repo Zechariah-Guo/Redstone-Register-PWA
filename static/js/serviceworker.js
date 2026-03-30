@@ -12,7 +12,7 @@ const assets = [
     "static/icons/mobile_screenshot.png",
 ];
 
-const CATALOGUE_ASSETS = "catalogue-assets-v2";
+const CATALOGUE_ASSETS = "catalogue-assets-v3";
 
 self.addEventListener("install", (installEvt) => {
     installEvt.waitUntil(
