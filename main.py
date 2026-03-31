@@ -1,4 +1,4 @@
-import re
+import re  # For mass commenting out SQL Queries
 
 from flask import Flask
 from flask import render_template
@@ -13,6 +13,23 @@ app = Flask(__name__)
 
 SEARCH_QUERY_PATTERN = re.compile(r"[^a-zA-Z0-9\s'\-]")
 
+CSP_POLICY = (
+    "default-src 'self'; "
+    "base-uri 'self'; "
+    "form-action 'self'; "
+    "frame-ancestors 'none'; "
+    "object-src 'none'; "
+    "script-src 'self'; "
+    "style-src 'self' https://fonts.googleapis.com; "
+    "font-src 'self' https://fonts.gstatic.com; "
+    "img-src 'self' https://cdn-icons-png.flaticon.com https://static0.thegamerimages.com https://recess.gg; "
+    "connect-src 'self'; "
+    "manifest-src 'self'; "
+    "media-src 'self'; "
+    "frame-src 'none'; "
+    "worker-src 'self'"
+)
+
 
 def normalise_search_query(raw_value):
     if not raw_value:
@@ -22,6 +39,21 @@ def normalise_search_query(raw_value):
     cleaned = SEARCH_QUERY_PATTERN.sub("", trimmed)
     cleaned = re.sub(r"\s+", " ", cleaned).strip()
     return cleaned
+
+
+@app.after_request
+def apply_security_headers(response):
+    response.headers["Content-Security-Policy"] = CSP_POLICY
+    response.headers["X-Frame-Options"] = "DENY"
+    response.headers["X-Content-Type-Options"] = "nosniff"
+    response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+
+    if request.is_secure:
+        response.headers["Strict-Transport-Security"] = (
+            "max-age=31536000; includeSubDomains"
+        )
+
+    return response
 
 
 @app.route("/", methods=["GET"])
