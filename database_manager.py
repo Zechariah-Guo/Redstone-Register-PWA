@@ -19,18 +19,30 @@ BASE_COMPONENT_QUERY = """
     FROM components
 """
 
+MAX_SEARCH_LENGTH = 80
+
+
+def normalise_search_text(search_text):
+    if not search_text:
+        return None
+
+    cleaned = str(search_text).strip()[:MAX_SEARCH_LENGTH]
+    return cleaned or None
+
 
 def list_components(search_text=None):
     query = BASE_COMPONENT_QUERY
     parameters = {}
 
-    if search_text:
+    safe_search_text = normalise_search_text(search_text)
+
+    if safe_search_text:
         query += " WHERE lower(Name) LIKE :search_text"
-        parameters["search_text"] = f"%{search_text.lower()}%"
+        parameters["search_text"] = f"%{safe_search_text.lower()}%"
 
     query += " ORDER BY Name ASC"
 
-    with ENGINE.connect() as connection:
+    with ENGINE.begin() as connection:
         rows = connection.execute(text(query), parameters).all()
     return rows
 

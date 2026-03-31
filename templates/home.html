@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<section class="home-hero" id="home" aria-label="Homepage hero">
+    <img src="{{ url_for('static', filename='images/Phone-modified-hero.webp') }}" alt="Redstone circuits in Minecraft" class="hero-image">
+    <div class="home-hero-overlay">
+        <h1 class="hero-title">Redstone Register</h1>
+        <p class="hero-subtitle">The complete redstone component catalogue.</p>
+        <a href="{{ url_for('catalogue') }}" class="minecraft-button">Enter the catalogue</a>
+    </div>
+</section>
+
+<section class="home-section home-section-1" aria-label="Catalogue overview">
+    <img src="{{ url_for('static', filename='images/Block_of_Redstone_JE2_BE2.png') }}" alt="Block of redstone" class="section-image">
+    <div class="section-content">
+        <h2>Browse our catalogue</h2>
+        <p>Explore a comprehensive list of redstone components with filters, search, sorting, and pinning. Find what you need quickly and compare components at a glance.</p>
+        <a href="{{ url_for('catalogue') }}" class="minecraft-button">Visit catalogue</a>
+    </div>
+</section>
+
+<section class="home-section home-section-2" aria-label="About and FAQ overview">
+    <div class="section-content">
+        <h2>Learn and explore</h2>
+        <p>Get answers to common questions and learn how to make the most of the catalogue.</p>
+        <a href="{{ url_for('about') }}#faq-heading" class="minecraft-button">View FAQ</a>
+    </div>
+    <img src="{{ url_for('static', filename='images/Redstone_Dust_JE2_BE2.png') }}" alt="Redstone dust" class="section-image">
+</section>
+
+<section class="home-section home-section-3" aria-label="About overview">
+    <img src="{{ url_for('static', filename='images/Lit_Redstone_Lamp_JE3_BE2.png') }}" alt="Redstone lamp" class="section-image">
+    <div class="section-content">
+        <h2>About Redstone Register</h2>
+        <p>Discover why Redstone Register exists and how it supports Minecraft newbies and pros alike.</p>
+        <a href="{{ url_for('about') }}" class="minecraft-button">Read our story</a>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+
+{% endblock %}

@@ -1,27 +1,101 @@
 {% extends 'layout.html' %}
-
 {% block content %}
-<section class="faq-panel" aria-label="About overview">
-    <section class="introduction-panel">
+
+<section class="about-section" aria-label="About Redstone Register">
+    <div class="about-hero">
         <h1 class="intro-heading">
-            <b>About</b>
+            <b>About Redstone Register</b>
         </h1>
-        <h3>
-            Redstone Register is a catalogue built to help players find and compare Minecraft redstone components quickly.
-        </h3>
-    </section>
+    </div>
 </section>
 
-    <footer class="site-footer" aria-label="Footer">
-        <div class="site-footer-inner">
-            <img class="site-footer-logo" src="static/images/logo.png" alt="Redstone Register logo.">
-            <p class="site-footer-copy">©2026 Redstone Register</p>
-            <ul class="site-footer-pages" aria-label="Pages">
-                <li><a href="/">Home</a></li>
-                <li><a href="faq.html">FAQs</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
+<section class="about-content" aria-label="About Redstone Register content">
+    <div class="about-block">
+        <h3>What is Redstone?</h3>
+        <p>Redstone is a highly complex and versatile system in the sandbox game Minecraft, serving as a rough equivalent to electrical engineering. Redstone empowers imagination and rewards logical thinking, allowing players to develop contraptions capable of automation, computation, and even trapping.</p>
+        <img src="https://static0.thegamerimages.com/wordpress/wp-content/uploads/wm/2024/04/minecraft_-best-silly-redstone-machines-feature-image.jpg" class="about-block-img">
+    </div>
+    <div class="about-block">
+        <h3>What is the Redstone Register?</h3>
+        <p>Redstone Register is a PWA built on the Flask framework that aims to provide powerful and convenient access to information on all 46 redstone components in the massively popular sandbox game Minecraft.</p>
+        <p>Getting into a topic as vast and nuanced as redstone can be daunting. As such, Redstone Register aims to lower the barrier of entry into this vast field by presenting all the functional components of redstone in a comprehensive yet digestable format, opening a clear path into further discovery by piquing intrest.</p>
+        <img src="{{ url_for('static', filename='images/Basic Redstone.png') }}" class="about-block-img-2">
+        <br>
+        <br>
+        <p>Additionally, Redstone Register serves as a useful tool for more advanced players, effectively categorising all the aspects of physical redstone through search, filtering, and pinning, allowing for easy discovery, tracking, and further research. Every mega-project starts somewhere and in redstone, it starts with components.</p>
+        <img src="https://recess.gg/cdn-cgi/image/width=1920,height=1080,quality=90,format=jpeg/https://assets.recess.gg/courses/ff2c1cd9-cb4c-40ed-b186-5dd0104c607e/1728491777901.png" class="about-block-img-2">
+    </div>
+</section>
+
+<section class="faq-panel" id="faq-section" aria-label="Frequently asked questions">
+    <h2 class="faq-heading faq-panel-heading" id="faq-heading">Frequently Asked Questions</h2>
+    <div class="faq-grid">
+        <section class="faq-questions-column" aria-label="FAQ questions">
+            <div class="faq-questions-list" aria-label="FAQ question list">
+                <button class="faq-question-button" type="button" data-answer-id="faq-answer-1">How can I search for a component quickly?</button>
+                <button class="faq-question-button" type="button" data-answer-id="faq-answer-2">Why do some recipes allow multiple types of wood?</button>
+                <button class="faq-question-button" type="button" data-answer-id="faq-answer-3">Why are some components missing a recipe?</button>
+                <button class="faq-question-button" type="button" data-answer-id="faq-answer-4">Where do I learn more about a component?</button>
+                <button class="faq-question-button" type="button" data-answer-id="faq-answer-5">Some recipes are missing! Where are they?</button>
+                <button class="faq-question-button" type="button" data-answer-id="faq-answer-6">How is complexity scored?</button>
+                <button class="faq-question-button" type="button" data-answer-id="faq-answer-7">How is obtainability scored?</button>
+                <button class="faq-question-button" type="button" data-answer-id="faq-answer-8">Is this an official Minecraft site?</button>
+                
+            </div>
+        </section>
+
+        <section class="faq-answer-panel" aria-live="polite" aria-label="FAQ answer panel">
+            <div class="faq-answer-placeholder is-visible" id="faq-answer-panel">
+                <p>Select a question to view the answer.</p>
+            </div>
+        </section>
+
+        <aside class="faq-wiki-column" aria-label="Related resources">
+            <h3 class="faq-wiki-heading">Related resources</h3>
+            <a class="wiki-link wiki-link-grass" href="https://minecraft.wiki/" target="_blank" rel="noopener noreferrer" aria-label="Minecraft Wiki">
+                <img src="{{ url_for('static', filename='images/Wiki.png') }}" alt="Minecraft Wiki" class="wiki-link-image">
+            </a>
+            <a class="wiki-link" href="https://minecraft.wiki/w/Redstone" target="_blank" rel="noopener noreferrer">Redstone Basics</a>
+            <a class="wiki-link" href="https://minecraft.wiki/w/Redstone_circuit" target="_blank" rel="noopener noreferrer">Redstone Circuits</a>
+        </aside>
+    </div>
+
+    <div class="faq-answer-bank hidden" aria-hidden="true">
+        <div class="faq-answer-content" id="faq-answer-1">
+            <h3>How can I search for a component quickly?</h3>
+            <p>Use the search field on the catalogue page. Results update as you type. You can also use filters to narrow by category, complexity, and obtainability. Sorting is available for alphabetical order, complexity, and obtainability.</p>
         </div>
-    </footer>
+        <div class="faq-answer-content" id="faq-answer-2">
+            <h3>Why do some recipes allow multiple types of wood?</h3>
+            <p>Recipes that accept different wood types (like the jukebox) let you mix or match any wood. Many wooden recipes also accept any wood type as long as the recipe uses the same type throughout (such as doors).</p>
+        </div>
+        <div class="faq-answer-content" id="faq-answer-3">
+            <h3>Why are some components missing a recipe?</h3>
+            <p>Some components are obtained from the environment (for example, redstone dust comes from ores) and do not require crafting.</p>
+        </div>
+        <div class="faq-answer-content" id="faq-answer-4">
+            <h3>Where do I learn more about a component?</h3>
+            <p>Each component includes a wiki link inside its expanded details. The wiki has in-depth coverage of features, history, and usage.</p>
+        </div>
+        <div class="faq-answer-content" id="faq-answer-5">
+            <h3>Some recipes are missing! Where are they?</h3>
+            <p>This catalogue covers all 46 redstone components in Minecraft. If you need items outside these, use the official Minecraft Wiki. Some components also have material variants (for example, different doors and pressure plates) that share the same overall entry.</p>
+        </div>
+        <div class="faq-answer-content" id="faq-answer-6">
+            <h3>How is complexity scored?</h3>
+            <p>Complexity is scored from 1 to 4 based on how hard a component is to understand and use in a contraption. Higher scores indicate more difficult components.</p>
+        </div>
+        <div class="faq-answer-content" id="faq-answer-7">
+            <h3>How is obtainability scored?</h3>
+            <p>Obtainability is scored from 1 to 4 based on how hard the component is to find or craft. Some require rare materials or dangerous environments.</p>
+        </div>
+        <div class="faq-answer-content" id="faq-answer-8">
+            <h3>Is this an official Minecraft site?</h3>
+            <p>No, though if you thought it was that makes me very happy! This is simply a passion project to provide a genuinely useful service to the Minecraft community (much like the "official" wiki (which is technically also fan run)) whilst fufilling the requirments for a software engineering assessment task.</p>
+        </div>
+    </div>
+</section>
+
+<script src="{{ url_for('static', filename='js/about.js') }}"></script>
 
 {% endblock %}

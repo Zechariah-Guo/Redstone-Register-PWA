@@ -86,8 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalUsage = document.getElementById("modal-usage");
     const modalRecipe = document.getElementById("modal-recipe");
     const modalWiki = document.getElementById("modal-wiki");
+    const wikiShell = document.getElementById("details-wiki-shell");
     const modalComplexity = document.getElementById("modal-complexity");
     const modalObtainability = document.getElementById("modal-obtainability");
+    const detailsDialog = modal.querySelector(".details-dialog");
 
     const container = document.querySelector(".container");
     const noResults = document.getElementById("no-results");
@@ -101,6 +103,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const sortOptions = document.querySelectorAll(".sort-option");
     const sortDirectionButton = document.getElementById("sort-direction");
     const searchClearButton = document.getElementById("search-clear");
+    const pinnedSection = document.getElementById("pinned-section");
+    const pinnedContainer = document.getElementById("pinned-container");
 
     const allCards = Array.from(cards);
     const originalOrder = new Map();
@@ -111,15 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const state = {
         searchText: "",
-        category: "",
+        categories: new Set(),
         complexity: null,
         obtainability: null,
         sortBy: "none",
         sortDirection: "asc"
     };
 
+    let syncPinnedFilters = null;
+
     const hasActiveFilters = () => (
-        state.category !== "" ||
+        state.categories.size > 0 ||
         state.complexity !== null ||
         state.obtainability !== null
     );
@@ -146,6 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Keep track of which card opened the modal so focus can be restored on close.
     let lastFocusedCard = null;
+    let modalCloseTimer = null;
 
     // Ratings should always stay in the 0..4 range, even if DB data is invalid.
     const clampLevel = (value) => {
@@ -179,13 +186,20 @@ document.addEventListener('DOMContentLoaded', () => {
             return clampLevel(leftCard.dataset.obtainability) - clampLevel(rightCard.dataset.obtainability);
         }
 
+        const leftId = Number.parseInt(leftCard.dataset.id, 10);
+        const rightId = Number.parseInt(rightCard.dataset.id, 10);
+
+        if (!Number.isNaN(leftId) && !Number.isNaN(rightId)) {
+            return leftId - rightId;
+        }
+
         return originalOrder.get(leftCard) - originalOrder.get(rightCard);
     };
 
     const updateVisibleCards = () => {
         const matchingCards = allCards.filter((card) => {
             const matchesSearch = normaliseText(card.dataset.name).includes(state.searchText);
-            const matchesCategory = !state.category || card.dataset.category === state.category;
+            const matchesCategory = state.categories.size === 0 || state.categories.has(card.dataset.category);
             const matchesComplexity = state.complexity === null || clampLevel(card.dataset.complexity) === state.complexity;
             const matchesObtainability = state.obtainability === null || clampLevel(card.dataset.obtainability) === state.obtainability;
 
@@ -211,6 +225,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (noResults) {
             noResults.classList.toggle("hidden", matchingCards.length > 0);
+        }
+
+        if (typeof syncPinnedFilters === "function") {
+            syncPinnedFilters();
         }
 
         updateClearFiltersVisibility();
@@ -248,10 +266,23 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    const isSafeExternalUrl = (value) => {
+        if (!value) {
+            return false;
+        }
+
+        try {
+            const parsed = new URL(value);
+            return parsed.protocol === "http:" || parsed.protocol === "https:";
+        } catch (error) {
+            return false;
+        }
+    };
+
     // Disable the wiki button when no valid link is present.
     const updateWikiLink = (url) => {
         const safeUrl = (url || "").trim();
-        if (!safeUrl || safeUrl === "#") {
+        if (!isSafeExternalUrl(safeUrl)) {
             modalWiki.setAttribute("href", "#");
             modalWiki.setAttribute("aria-disabled", "true");
             return;
@@ -259,6 +290,38 @@ document.addEventListener('DOMContentLoaded', () => {
 
         modalWiki.setAttribute("href", safeUrl);
         modalWiki.removeAttribute("aria-disabled");
+    };
+
+    const openWikiWithDelay = (event) => {
+        if (!modalWiki) {
+            return;
+        }
+
+        if (modalWiki.getAttribute("aria-disabled") === "true") {
+            event.preventDefault();
+            return;
+        }
+
+        const targetUrl = modalWiki.getAttribute("href");
+        if (!isSafeExternalUrl(targetUrl)) {
+            event.preventDefault();
+            return;
+        }
+
+        event.preventDefault();
+        if (wikiShell) {
+            wikiShell.classList.add("is-pressing");
+        }
+
+        window.setTimeout(() => {
+            const newWindow = window.open(targetUrl, "_blank", "noopener");
+            if (newWindow) {
+                newWindow.opener = null;
+            }
+            if (wikiShell) {
+                wikiShell.classList.remove("is-pressing");
+            }
+        }, 160);
     };
 
     // Read all data-* attributes from the clicked card and push into modal fields.
@@ -282,6 +345,12 @@ document.addEventListener('DOMContentLoaded', () => {
         updateWikiLink(card.dataset.wiki);
 
         lastFocusedCard = card;
+        if (modalCloseTimer) {
+            window.clearTimeout(modalCloseTimer);
+            modalCloseTimer = null;
+        }
+
+        modal.classList.remove("is-closing");
         // CSS class controls visibility; aria/body class support accessibility and scroll lock.
         modal.classList.add("is-open");
         modal.setAttribute("aria-hidden", "false");
@@ -290,14 +359,41 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const closeModal = () => {
-        modal.classList.remove("is-open");
+        if (!modal.classList.contains("is-open") || modal.classList.contains("is-closing")) {
+            return;
+        }
+
+        const finishClose = () => {
+            modal.classList.remove("is-open", "is-closing");
+
+            if (modalCloseTimer) {
+                window.clearTimeout(modalCloseTimer);
+                modalCloseTimer = null;
+            }
+
+            // Return keyboard users to the card that launched the modal.
+            if (lastFocusedCard) {
+                lastFocusedCard.focus();
+            }
+        };
+
+        modal.classList.add("is-closing");
         modal.setAttribute("aria-hidden", "true");
         document.body.classList.remove("body-modal-open");
 
-        // Return keyboard users to the card that launched the modal.
-        if (lastFocusedCard) {
-            lastFocusedCard.focus();
+        if (detailsDialog) {
+            const onAnimationEnd = (event) => {
+                if (event.target !== detailsDialog) {
+                    return;
+                }
+                detailsDialog.removeEventListener("animationend", onAnimationEnd);
+                finishClose();
+            };
+
+            detailsDialog.addEventListener("animationend", onAnimationEnd);
         }
+
+        modalCloseTimer = window.setTimeout(finishClose, 260);
     };
 
     const setLevelFilter = (filterType, selectedValue) => {
@@ -315,11 +411,176 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        // Update the rating segment bar visual state
+        const segmentBar = document.querySelector(`.level-segment-bar[data-filter-type="${filterType}"]`);
+        if (segmentBar) {
+            if (selectedValue === "any") {
+                segmentBar.removeAttribute("data-selected-level");
+            } else {
+                segmentBar.setAttribute("data-selected-level", selectedValue);
+            }
+        }
+
         updateVisibleCards();
     };
 
-    // Mouse and keyboard can both open a card (Enter/Space for accessibility).
-    cards.forEach((card) => {
+    let filtersCloseTimer = null;
+
+    const clearFiltersCloseTimer = () => {
+        if (filtersCloseTimer) {
+            window.clearTimeout(filtersCloseTimer);
+            filtersCloseTimer = null;
+        }
+    };
+
+    const setFiltersExpandedState = (isExpanded) => {
+        if (!filtersPanel || !filterToggle) {
+            return;
+        }
+
+        filterToggle.classList.toggle("is-active", isExpanded);
+        filterToggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+        filtersPanel.setAttribute("aria-hidden", isExpanded ? "false" : "true");
+    };
+
+    const openFiltersPanel = () => {
+        if (!filtersPanel) {
+            return;
+        }
+
+        clearFiltersCloseTimer();
+        filtersPanel.classList.remove("hidden");
+
+        // Force style flush so the opening transition always runs.
+        void filtersPanel.offsetHeight;
+
+        filtersPanel.classList.add("is-open");
+        setFiltersExpandedState(true);
+    };
+
+    const closeFiltersPanel = () => {
+        if (!filtersPanel) {
+            return;
+        }
+
+        clearFiltersCloseTimer();
+        filtersPanel.classList.remove("is-open");
+        setFiltersExpandedState(false);
+
+        const hideAfterClose = () => {
+            if (!filtersPanel.classList.contains("is-open")) {
+                filtersPanel.classList.add("hidden");
+            }
+            clearFiltersCloseTimer();
+        };
+
+        const onTransitionEnd = (event) => {
+            if (event.propertyName !== "max-height") {
+                return;
+            }
+
+            filtersPanel.removeEventListener("transitionend", onTransitionEnd);
+            hideAfterClose();
+        };
+
+        filtersPanel.addEventListener("transitionend", onTransitionEnd, { once: true });
+        filtersCloseTimer = window.setTimeout(hideAfterClose, 380);
+    };
+
+    const toggleFiltersPanel = () => {
+        if (!filtersPanel) {
+            return;
+        }
+
+        const isPanelVisible = !filtersPanel.classList.contains("hidden");
+        const isPanelOpen = filtersPanel.classList.contains("is-open");
+
+        if (!isPanelVisible || !isPanelOpen) {
+            openFiltersPanel();
+            return;
+        }
+
+        closeFiltersPanel();
+    };
+
+    let sortCloseTimer = null;
+
+    const clearSortCloseTimer = () => {
+        if (sortCloseTimer) {
+            window.clearTimeout(sortCloseTimer);
+            sortCloseTimer = null;
+        }
+    };
+
+    const setSortExpandedState = (isExpanded) => {
+        if (!sortToggle || !sortMenu) {
+            return;
+        }
+
+        sortToggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+    };
+
+    const openSortMenu = () => {
+        if (!sortMenu) {
+            return;
+        }
+
+        clearSortCloseTimer();
+        sortMenu.classList.remove("hidden");
+
+        // Force style flush so opening transition is always applied.
+        void sortMenu.offsetHeight;
+
+        sortMenu.classList.add("is-open");
+        setSortExpandedState(true);
+    };
+
+    const closeSortMenu = () => {
+        if (!sortMenu) {
+            return;
+        }
+
+        clearSortCloseTimer();
+        sortMenu.classList.remove("is-open");
+        setSortExpandedState(false);
+
+        const hideAfterClose = () => {
+            if (!sortMenu.classList.contains("is-open")) {
+                sortMenu.classList.add("hidden");
+            }
+            clearSortCloseTimer();
+        };
+
+        const onTransitionEnd = (event) => {
+            if (event.propertyName !== "max-height") {
+                return;
+            }
+
+            sortMenu.removeEventListener("transitionend", onTransitionEnd);
+            hideAfterClose();
+        };
+
+        sortMenu.addEventListener("transitionend", onTransitionEnd, { once: true });
+        sortCloseTimer = window.setTimeout(hideAfterClose, 340);
+    };
+
+    const toggleSortMenu = () => {
+        if (!sortMenu) {
+            return;
+        }
+
+        const isMenuVisible = !sortMenu.classList.contains("hidden");
+        const isMenuOpen = sortMenu.classList.contains("is-open");
+
+        if (!isMenuVisible || !isMenuOpen) {
+            openSortMenu();
+            return;
+        }
+
+        closeSortMenu();
+    };
+
+    const attachCardActivation = (card) => {
         card.addEventListener("click", () => openModalForCard(card));
         card.addEventListener("keydown", (event) => {
             if (event.key === "Enter" || event.key === " ") {
@@ -327,9 +588,35 @@ document.addEventListener('DOMContentLoaded', () => {
                 openModalForCard(card);
             }
         });
+    };
+
+    // Mouse and keyboard can both open a card (Enter/Space for accessibility).
+    cards.forEach((card) => {
+        attachCardActivation(card);
     });
 
+    const pinning = window.cataloguePinning;
+
+    if (pinning && pinnedSection && pinnedContainer) {
+        pinning.init({
+            cards: allCards,
+            section: pinnedSection,
+            container: pinnedContainer,
+            handleCardActivation: attachCardActivation
+        });
+        syncPinnedFilters = pinning.syncPinnedFilters;
+    }
+
     closeButton.addEventListener("click", closeModal);
+
+    if (modalWiki) {
+        modalWiki.addEventListener("click", openWikiWithDelay);
+        modalWiki.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " ") {
+                openWikiWithDelay(event);
+            }
+        });
+    }
 
     if (searchinput) {
         searchinput.addEventListener("input", (event) => {
@@ -367,7 +654,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     categoryInputs.forEach((input) => {
         input.addEventListener("change", () => {
-            state.category = input.value;
+            if (input.checked) {
+                state.categories.add(input.value);
+            } else {
+                state.categories.delete(input.value);
+            }
             updateVisibleCards();
         });
     });
@@ -378,26 +669,38 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    if (filterToggle && filtersPanel) {
-        filterToggle.addEventListener("click", () => {
-            const isOpen = !filtersPanel.classList.contains("hidden");
-            filtersPanel.classList.toggle("hidden", isOpen);
-            filterToggle.classList.toggle("is-active", !isOpen);
-            filterToggle.setAttribute("aria-expanded", String(!isOpen));
-            filtersPanel.setAttribute("aria-hidden", String(isOpen));
+    // Add event listeners for rating segment buttons in filters
+    const segmentButtons = document.querySelectorAll(".rating-segment-button");
+    segmentButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const bar = button.closest(".level-segment-bar");
+            if (bar) {
+                const filterType = bar.dataset.filterType;
+                const level = button.dataset.level;
+                setLevelFilter(filterType, level);
+            }
         });
+    });
+
+    if (filterToggle && filtersPanel) {
+        filtersPanel.classList.add("hidden");
+        filtersPanel.classList.remove("is-open");
+        setFiltersExpandedState(false);
+
+        // Keep the simple named-function toggle pattern requested for this button.
+        window.toggleFiltersPanel = toggleFiltersPanel;
+        filterToggle.onclick = window.toggleFiltersPanel;
     }
 
     if (clearFiltersButton) {
         clearFiltersButton.addEventListener("click", () => {
-            state.category = "";
+            state.categories.clear();
             state.complexity = null;
             state.obtainability = null;
 
-            const defaultCategory = document.querySelector('input[name="category-filter"][value=""]');
-            if (defaultCategory) {
-                defaultCategory.checked = true;
-            }
+            categoryInputs.forEach((input) => {
+                input.checked = false;
+            });
 
             ["complexity", "obtainability"].forEach((type) => {
                 levelChips.forEach((chip) => {
@@ -405,6 +708,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         chip.classList.toggle("is-active", chip.dataset.level === "any");
                     }
                 });
+
+                const segmentBar = document.querySelector(`.level-segment-bar[data-filter-type="${type}"]`);
+                if (segmentBar) {
+                    segmentBar.removeAttribute("data-selected-level");
+                }
             });
 
             updateVisibleCards();
@@ -412,11 +720,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (sortToggle && sortMenu) {
-        sortToggle.addEventListener("click", () => {
-            const isOpen = !sortMenu.classList.contains("hidden");
-            sortMenu.classList.toggle("hidden", isOpen);
-            sortToggle.setAttribute("aria-expanded", String(!isOpen));
-        });
+        sortMenu.classList.add("hidden");
+        sortMenu.classList.remove("is-open");
+        setSortExpandedState(false);
+
+        sortToggle.addEventListener("click", toggleSortMenu);
     }
 
     sortOptions.forEach((option) => {
@@ -426,8 +734,7 @@ document.addEventListener('DOMContentLoaded', () => {
             updateVisibleCards();
 
             if (sortMenu && sortToggle) {
-                sortMenu.classList.add("hidden");
-                sortToggle.setAttribute("aria-expanded", "false");
+                closeSortMenu();
             }
         });
     });
@@ -435,8 +742,19 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sortDirectionButton) {
         sortDirectionButton.addEventListener("click", () => {
             state.sortDirection = state.sortDirection === "asc" ? "desc" : "asc";
-            sortDirectionButton.textContent = state.sortDirection === "asc" ? "Asc" : "Desc";
+
+            const label = sortDirectionButton.querySelector(".label");
+            if (label) {
+                label.textContent = state.sortDirection === "asc" ? "Asc" : "Desc";
+            }
             sortDirectionButton.setAttribute("aria-pressed", String(state.sortDirection === "desc"));
+            sortDirectionButton.setAttribute("title", state.sortDirection === "asc" ? "Ascending" : "Descending");
+
+            const icon = sortDirectionButton.querySelector(".material-symbols-outlined");
+            if (icon) {
+                icon.classList.toggle("icon-flipped", state.sortDirection === "asc");
+            }
+
             updateVisibleCards();
         });
     }
@@ -461,8 +779,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (!sortMenu.classList.contains("hidden") && !sortMenu.contains(event.target) && !sortToggle.contains(event.target)) {
-            sortMenu.classList.add("hidden");
-            sortToggle.setAttribute("aria-expanded", "false");
+            closeSortMenu();
         }
     });
 

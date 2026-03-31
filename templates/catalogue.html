@@ -1,0 +1,212 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <section class="catalogue-panel" aria-label="Catalogue overview">
+        <section class="introduction-panel">
+            <h1 class="intro-heading">
+                <b>Redstone Components Catalogue</b>
+            </h1>
+            <h3>
+                Welcome to Redstone Register! We aim to provide the most up-to-date, comprehensive catalogue for all things redstone. Make use of search tools and filters to find exactly what you need, every single time.
+            </h3>
+        </section>
+    </section>
+    <div class="catalogue-toolbar">
+        <div class="search-wrap">
+            <input type="search" placeholder="🔍 Search..." class="searchinput" id="searchbar" aria-label="Search components by name" maxlength="80" value="{{ search_query | default('', true) | e }}">
+            <button type="button" class="search-clear hidden" id="search-clear" aria-label="Clear search">x</button>
+        </div>
+
+        <button class="toolbar-button filter-toggle" id="filter-toggle" type="button" aria-expanded="false" aria-controls="filters-panel">
+            Filters
+            <span class="material-symbols-outlined">filter_alt</span>
+        </button>
+
+        <button class="toolbar-button clear-filters hidden" id="clear-filters" type="button">Clear all</button>
+
+        <div class="sort-controls">
+            <div class="sort-dropdown-wrap">
+                <button class="toolbar-button sort-toggle" id="sort-toggle" type="button" aria-expanded="false" aria-controls="sort-menu">
+                    Sort by
+                    <span class="material-symbols-outlined">filter_alt</span>
+                </button>
+
+                <div class="sort-menu hidden" id="sort-menu" role="listbox" aria-label="Sort options">
+                    <button class="sort-option sort-option-first is-selected" type="button" data-sort="none" role="option" aria-selected="true">None</button>
+                    <button class="sort-option" type="button" data-sort="alphabetical" role="option" aria-selected="false">Alphabetical</button>
+                    <button class="sort-option" type="button" data-sort="complexity" role="option" aria-selected="false">Complexity</button>
+                    <button class="sort-option sort-option-last" type="button" data-sort="obtainability" role="option" aria-selected="false">Obtainability</button>
+                </div>
+            </div>
+
+            <button class="toolbar-button sort-direction" id="sort-direction" type="button" aria-label="Toggle sort direction" aria-pressed="false" title="Ascending">
+            <span class="material-symbols-outlined icon-flipped">filter_list</span>
+            </button>
+        </div>
+    </div>
+
+    <div class="filters-panel hidden" id="filters-panel" aria-hidden="true">
+        <fieldset class="filter-group">
+            <legend>Filter by category</legend>
+            <div class="category-options">
+                <label class="category-option">
+                    <input type="checkbox" name="category-filter" value="Power Component">
+                    <div class="category-icon-wrapper">
+                        <img src="{{ url_for('static', filename='images/Block_of_Redstone_JE2_BE2.png') }}" alt="Power Component icon" class="category-icon">
+                        <span>Power</span>
+                    </div>
+                </label>
+                <label class="category-option">
+                    <input type="checkbox" name="category-filter" value="Transmission Component">
+                    <div class="category-icon-wrapper">
+                        <img src="{{ url_for('static', filename='images/Redstone_Dust_JE2_BE2.png') }}" alt="Transmission Component icon" class="category-icon">
+                        <span>Transmission</span>
+                    </div>
+                </label>
+                <label class="category-option">
+                    <input type="checkbox" name="category-filter" value="Mechanism Component">
+                    <div class="category-icon-wrapper">
+                        <img src="{{ url_for('static', filename='images/Lit_Redstone_Lamp_JE3_BE2.png') }}" alt="Mechanism Component icon" class="category-icon">
+                        <span>Mechanism</span>
+                    </div>
+                </label>
+                <label class="category-option">
+                    <input type="checkbox" name="category-filter" value="Mobile Component">
+                    <div class="category-icon-wrapper">
+                        <img src="{{ url_for('static', filename='images/Minecart_JE4_BE2.png') }}" alt="Mobile Component icon" class="category-icon">
+                        <span>Mobile</span>
+                    </div>
+                </label>
+            </div>
+        </fieldset>
+
+        <fieldset class="filter-group">
+            <legend>Filter by complexity</legend>
+            <div class="level-filter" id="complexity-filter">
+                <button type="button" class="level-chip is-active" data-filter-type="complexity" data-level="any">Any</button>
+                <div class="level-segment-bar" data-filter-type="complexity" aria-label="Select complexity level">
+                    <button type="button" class="rating-segment-button" data-level="1" aria-label="Complexity level 1"></button>
+                    <button type="button" class="rating-segment-button" data-level="2" aria-label="Complexity level 2"></button>
+                    <button type="button" class="rating-segment-button" data-level="3" aria-label="Complexity level 3"></button>
+                    <button type="button" class="rating-segment-button" data-level="4" aria-label="Complexity level 4"></button>
+                </div>
+            </div>
+        </fieldset>
+
+        <fieldset class="filter-group">
+            <legend>Filter by obtainability</legend>
+            <div class="level-filter" id="obtainability-filter">
+                <button type="button" class="level-chip is-active" data-filter-type="obtainability" data-level="any">Any</button>
+                <div class="level-segment-bar" data-filter-type="obtainability" aria-label="Select obtainability level">
+                    <button type="button" class="rating-segment-button" data-level="1" aria-label="Obtainability level 1"></button>
+                    <button type="button" class="rating-segment-button" data-level="2" aria-label="Obtainability level 2"></button>
+                    <button type="button" class="rating-segment-button" data-level="3" aria-label="Obtainability level 3"></button>
+                    <button type="button" class="rating-segment-button" data-level="4" aria-label="Obtainability level 4"></button>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+    <p class="no-results hidden" id="no-results">No results, please try again.</p>
+
+    <div class="pinned-cards-section hidden" id="pinned-section" aria-label="Pinned components">
+        <h2 class="pinned-section-title">Pinned components</h2>
+        <div class="pinned-container" id="pinned-container"></div>
+    </div>
+
+    <div class="container">
+        {% for row in content %}
+            {% set complexity_level = row[3] | int %}
+            {% set obtainability_level = row[4] | int %}
+            <div class="card card-expand-trigger"
+                 id="card-{{ row[0] }}"
+                 role="button"
+                 tabindex="0"
+                 aria-label="Open details for {{ row[2] }}"
+                 data-id="{{ row[0] }}"
+                 data-image="{{ row[1] | e }}"
+                 data-name="{{ row[2] | e }}"
+                 data-complexity="{{ complexity_level }}"
+                 data-obtainability="{{ obtainability_level }}"
+                 data-category="{{ row[5] | e }}"
+                 data-wiki="{{ row[6] | e }}"
+                 data-description="{{ row[7] | e }}"
+                 data-usage="{{ row[8] | e }}"
+                 data-recipe="{{ row[9] | e }}">
+                <button class="pin-button" type="button" data-pin-id="{{ row[0] }}" aria-label="Pin {{ row[2] }}">
+                    <span class="material-symbols-outlined">push_pin</span>
+                </button>
+                <img class="card-image" src='{{ row[1] }}' alt="Image for the {{ row[2] }} component.">
+                <h1 class="card-name">{{ row[2] }}</h1>
+
+                <div class="rating-block" aria-label="Complexity level {{ complexity_level }} out of 4">
+                    <span class="rating-label">Complexity</span>
+                    <div class="rating-bar level-{{ complexity_level }}">
+                        {% for segment in range(1, 5) %}
+                            <span class="rating-segment{% if segment <= complexity_level %} is-filled{% endif %}"></span>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="rating-block" aria-label="Obtainability level {{ obtainability_level }} out of 4">
+                    <span class="rating-label">Obtainability</span>
+                    <div class="rating-bar level-{{ obtainability_level }}">
+                        {% for segment in range(1, 5) %}
+                            <span class="rating-segment{% if segment <= obtainability_level %} is-filled{% endif %}"></span>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="hover_clickme" aria-hidden="true">Click to expand</div>
+            </div>
+        {% endfor %} 
+    </div>
+
+    <div class="details-modal" id="component-modal" aria-hidden="true">
+        <div class="details-dialog" role="dialog" aria-modal="true" aria-labelledby="modal-component-name">
+            <button class="modal-close" id="modal-close" type="button" aria-label="Close details">x</button>
+
+            <section class="details-column details-column-left">
+                <img id="modal-image" class="details-main-image" src="" alt="">
+
+                <div class="rating-block details-rating-block" aria-label="Component complexity">
+                    <span class="rating-label">Complexity</span>
+                    <div id="modal-complexity" class="rating-bar"></div>
+                </div>
+
+                <div class="rating-block details-rating-block" aria-label="Component obtainability">
+                    <span class="rating-label">Obtainability</span>
+                    <div id="modal-obtainability" class="rating-bar"></div>
+                </div>
+
+                <div class="details-wiki-shell" id="details-wiki-shell">
+                    <a id="modal-wiki" class="details-wiki-link" href="#" target="_blank" rel="noopener noreferrer">Open wiki article</a>
+                </div>
+            </section>
+
+            <section class="details-column details-column-right">
+                <p id="modal-category" class="details-category"></p>
+                <h2 id="modal-component-name" class="details-name"></h2>
+
+                <div class="details-panel">
+                    <h3 class="details-subheading">Short description</h3>
+                    <p id="modal-description" class="details-copy"></p>
+                </div>
+
+                <div class="details-panel">
+                    <h3 class="details-subheading">Short usage description</h3>
+                    <p id="modal-usage" class="details-copy"></p>
+                </div>
+
+                <div class="details-panel details-recipe-panel">
+                    <h3 class="details-subheading">Crafting recipe</h3>
+                    <img id="modal-recipe" class="details-recipe-image" src="" alt="Crafting recipe image">
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <button type="button" id="jump-top" class="jump-top hidden" aria-label="Jump to top">^</button>
+
+    <script src="{{ url_for('static', filename='js/pinning.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/catalogue.js') }}"></script>
+
+{% endblock %}

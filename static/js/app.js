@@ -7,13 +7,49 @@ if ("serviceWorker" in navigator) {
     });
 }
 
+let deferredInstallPrompt = null;
+
+window.addEventListener("beforeinstallprompt", (event) => {
+    event.preventDefault();
+    deferredInstallPrompt = event;
+
+    const installButton = document.getElementById("install-button");
+    if (installButton) {
+        installButton.classList.remove("hidden");
+    }
+});
+
+window.addEventListener("appinstalled", () => {
+    deferredInstallPrompt = null;
+    const installButton = document.getElementById("install-button");
+    if (installButton) {
+        installButton.classList.add("hidden");
+    }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
+    const installButton = document.getElementById("install-button");
+    if (installButton) {
+        if (deferredInstallPrompt) {
+            installButton.classList.remove("hidden");
+        }
+
+        installButton.addEventListener("click", async () => {
+            if (!deferredInstallPrompt) {
+                return;
+            }
+
+            deferredInstallPrompt.prompt();
+            await deferredInstallPrompt.userChoice;
+            deferredInstallPrompt = null;
+            installButton.classList.add("hidden");
+        });
+    }
+
     const navbar = document.getElementById("navbar");
     const navBurger = document.getElementById("nav-burger");
     const navLinks = document.getElementById("nav-links");
     const navLogo = document.getElementById("nav-logo-link");
-    const navbarSearchInput = document.getElementById("navbarsearch");
-
     if (!navbar || !navBurger || !navLinks || !navLogo) {
         return;
     }
