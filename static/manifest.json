@@ -3,9 +3,8 @@
         "short_name": "RedstoneRegister",
         "start_url": "/",
         "display": "standalone",
-        "background_color": "#fdfdfd",
-        "theme_color": "#14E6DD",
-        "orientation": "landscape-primary",
+        "background_color": "#1f1f1f",
+        "theme_color": "#1f1f1f",
         "icons": [
         {
             "src": "icons/icon-128x128.png",

@@ -9,6 +9,31 @@ if ("serviceWorker" in navigator) {
 
 let deferredInstallPrompt = null;
 
+const setInstallVisibilityState = (isVisible) => {
+    const navbar = document.getElementById("navbar");
+    if (!navbar) {
+        return;
+    }
+
+    navbar.classList.toggle("has-install", isVisible);
+};
+
+const lockOrientationForPhone = () => {
+    const isPhone = window.matchMedia("(max-width: 450px)").matches;
+    const isStandalone =
+        window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+
+    if (!isPhone || !isStandalone) {
+        return;
+    }
+
+    if (screen.orientation && typeof screen.orientation.lock === "function") {
+        screen.orientation.lock("portrait").catch(() => {
+            // Orientation lock can fail on some browsers; ignore gracefully.
+        });
+    }
+};
+
 window.addEventListener("beforeinstallprompt", (event) => {
     event.preventDefault();
     deferredInstallPrompt = event;
@@ -16,6 +41,7 @@ window.addEventListener("beforeinstallprompt", (event) => {
     const installButton = document.getElementById("install-button");
     if (installButton) {
         installButton.classList.remove("hidden");
+        setInstallVisibilityState(true);
     }
 });
 
@@ -24,14 +50,17 @@ window.addEventListener("appinstalled", () => {
     const installButton = document.getElementById("install-button");
     if (installButton) {
         installButton.classList.add("hidden");
+        setInstallVisibilityState(false);
     }
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+    lockOrientationForPhone();
     const installButton = document.getElementById("install-button");
     if (installButton) {
         if (deferredInstallPrompt) {
             installButton.classList.remove("hidden");
+            setInstallVisibilityState(true);
         }
 
         installButton.addEventListener("click", async () => {
@@ -43,8 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
             await deferredInstallPrompt.userChoice;
             deferredInstallPrompt = null;
             installButton.classList.add("hidden");
+            setInstallVisibilityState(false);
         });
     }
+
+    setInstallVisibilityState(installButton && !installButton.classList.contains("hidden"));
 
     const navbar = document.getElementById("navbar");
     const navBurger = document.getElementById("nav-burger");
