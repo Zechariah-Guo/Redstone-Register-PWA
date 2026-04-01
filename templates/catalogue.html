@@ -51,28 +51,28 @@
                 <label class="category-option">
                     <input type="checkbox" name="category-filter" value="Power Component">
                     <div class="category-icon-wrapper">
-                        <img src="{{ url_for('static', filename='images/Block_of_Redstone_JE2_BE2.png') }}" alt="Power Component icon" class="category-icon">
+                        <img src="{{ url_for('static', filename='images/Block_of_Redstone_JE2_BE2.webp') }}" alt="Power Component icon" class="category-icon" loading="lazy" decoding="async" width="300" height="300">
                         <span>Power</span>
                     </div>
                 </label>
                 <label class="category-option">
                     <input type="checkbox" name="category-filter" value="Transmission Component">
                     <div class="category-icon-wrapper">
-                        <img src="{{ url_for('static', filename='images/Redstone_Dust_JE2_BE2.png') }}" alt="Transmission Component icon" class="category-icon">
+                        <img src="{{ url_for('static', filename='images/Redstone_Dust_JE2_BE2.webp') }}" alt="Transmission Component icon" class="category-icon" loading="lazy" decoding="async" width="160" height="160">
                         <span>Transmission</span>
                     </div>
                 </label>
                 <label class="category-option">
                     <input type="checkbox" name="category-filter" value="Mechanism Component">
                     <div class="category-icon-wrapper">
-                        <img src="{{ url_for('static', filename='images/Lit_Redstone_Lamp_JE3_BE2.png') }}" alt="Mechanism Component icon" class="category-icon">
+                        <img src="{{ url_for('static', filename='images/Lit_Redstone_Lamp_JE3_BE2.webp') }}" alt="Mechanism Component icon" class="category-icon" loading="lazy" decoding="async" width="300" height="300">
                         <span>Mechanism</span>
                     </div>
                 </label>
                 <label class="category-option">
                     <input type="checkbox" name="category-filter" value="Mobile Component">
                     <div class="category-icon-wrapper">
-                        <img src="{{ url_for('static', filename='images/Minecart_JE4_BE2.png') }}" alt="Mobile Component icon" class="category-icon">
+                        <img src="{{ url_for('static', filename='images/Minecart_JE4_BE2.webp') }}" alt="Mobile Component icon" class="category-icon" loading="lazy" decoding="async" width="302" height="254">
                         <span>Mobile</span>
                     </div>
                 </label>
@@ -135,7 +135,7 @@
                 <button class="pin-button" type="button" data-pin-id="{{ row[0] }}" aria-label="Pin {{ row[2] }}">
                     <span class="material-symbols-outlined">push_pin</span>
                 </button>
-                <img class="card-image" src='{{ row[1] }}' alt="Image for the {{ row[2] }} component.">
+                <img class="card-image" src='{{ row[1] }}' alt="Image for the {{ row[2] }} component." loading="lazy" decoding="async" width="110" height="110">
                 <h1 class="card-name">{{ row[2] }}</h1>
 
                 <div class="rating-block" aria-label="Complexity level {{ complexity_level }} out of 4">
@@ -204,7 +204,7 @@
         </div>
     </div>
 
-    <button type="button" id="jump-top" class="jump-top hidden" aria-label="Jump to top">^</button>
+    <button type="button" id="jump-top" class="jump-top hidden" aria-label="Jump to top">&uarr;</button>
 
     <script src="{{ url_for('static', filename='js/pinning.js') }}"></script>
     <script src="{{ url_for('static', filename='js/catalogue.js') }}"></script>

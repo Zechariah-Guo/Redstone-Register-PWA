@@ -1,5 +1,34 @@
-@import url("https://fonts.googleapis.com/css?family=Nunito:400,700&display=swap");
-@import url('https://fonts.cdnfonts.com/css/minecrafter-alt');
+@font-face {
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 200 1000;
+    font-display: swap;
+    src: url('../fonts/XRXV3I6Li01BKofINeaB.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Minecrafter';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/Minecrafter.Reg.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Minecrafter Alt';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('../fonts/Minecrafter.Alt.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Material Symbols Outlined';
+    font-style: normal;
+    font-weight: 100 700;
+    font-display: swap;
+    src: url('../fonts/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOej.woff2') format('woff2');
+}
 * {
     margin: 0px;
     padding: 0px;
@@ -551,15 +580,20 @@ nav img:hover {
 
 .material-symbols-outlined {
     font-family: 'Material Symbols Outlined';
-    font-weight: normal;
+    font-weight: 400;
     font-style: normal;
     font-size: 24px;
     display: inline-block;
     line-height: 1;
+    letter-spacing: normal;
     text-align: center;
     direction: ltr;
+    white-space: nowrap;
     user-select: none;
     color: currentColor;
+    font-feature-settings: 'liga';
+    -webkit-font-feature-settings: 'liga';
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
     transition: transform 0.2s ease;
 }
 
@@ -1071,7 +1105,7 @@ nav img:hover {
     width: 100%;
     margin: auto 0;
     padding: 0;
-    background-image: url("../images/Stone%20UI%20Button.png");
+    background-image: url("../images/Stone%20UI%20Button.webp");
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -1235,7 +1269,7 @@ nav img:hover {
     background: var(--bg-primary);
     border-bottom: 2px solid var(--border-colour);
     background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)),
-        url("../images/Falling_Lucky_Blocks_Thumbnail_0.jpg");
+        url("../images/Falling_Lucky_Blocks_Thumbnail_0.webp");
     background-size: cover;
     background-position: center;
     color: #ffffff;
@@ -1252,6 +1286,12 @@ nav img:hover {
 
 .about-section h1 {
     color: #f0f0f0;
+}
+
+.page-offline .about-hero p {
+    color: #f0f0f0;
+    font-size: 1.1rem;
+    margin-top: 0.75rem;
 }
 
 .about-section .intro-heading {
@@ -1487,7 +1527,7 @@ nav img:hover {
 }
 
 .wiki-link-grass {
-    background-image: url("../images/Grass-background.png");
+    background-image: url("../images/Grass-background.webp");
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
@@ -1501,7 +1541,7 @@ nav img:hover {
 
 .wiki-link-grass:hover,
 .wiki-link-grass:focus-visible {
-    background-image: url("../images/Grass-background.png");
+    background-image: url("../images/Grass-background.webp");
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;

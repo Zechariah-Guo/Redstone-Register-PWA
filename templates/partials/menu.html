@@ -1,11 +1,11 @@
 <nav id="navbar">
-    <a id="nav-logo-link" href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='images/logo.png') }}" alt="Redstone Register site logo." /></a>
+    <a id="nav-logo-link" href="{{ url_for('home') }}"><img src="{{ url_for('static', filename='images/logo.webp') }}" alt="Redstone Register site logo." width="1400" height="194" /></a>
     <div class="navsearchwrap">
         <input class="navbarsearch hidden" id="navbarsearch" type="search" placeholder="🔍 Search..." aria-label="Search the catalogue">
         <button type="button" class="nav-search-clear hidden" id="nav-search-clear" aria-label="Clear search">x</button>
     </div>
     <button id="nav-burger" class="nav-burger hidden" type="button" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-links">
-        <img class="nav-burger-icon" src="https://cdn-icons-png.flaticon.com/512/12314/12314153.png" alt="" aria-hidden="true">
+        <img class="nav-burger-icon" src="{{ url_for('static', filename='images/Burger-icon.webp') }}" alt="" aria-hidden="true" width="512" height="512">
     </button>
     <ul class="topnav" id="nav-links">
         <li><a href="{{ url_for('home') }}"><span class="material-symbols-outlined nav-link-icon">home</span>Home</a></li>

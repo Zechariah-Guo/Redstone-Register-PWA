@@ -15,7 +15,7 @@ BASE_COMPONENT_QUERY = """
         COALESCE(wiki_link, '#') AS wiki_link,
         COALESCE(short_description, 'No description available yet.') AS short_description,
         COALESCE(short_usage, 'No usage information available yet.') AS short_usage,
-        COALESCE(crafting_recipe, '../static/images/Recipes/Not_Applicable_Recipe.png') AS crafting_recipe
+        COALESCE(crafting_recipe, '../static/images/Recipes/Not_Applicable_Recipe.webp') AS crafting_recipe
     FROM components
 """
 

@@ -20,10 +20,10 @@ CSP_POLICY = (
     "frame-ancestors 'none'; "
     "object-src 'none'; "
     "script-src 'self'; "
-    "style-src 'self' https://fonts.googleapis.com https://fonts.cdnfonts.com; "
-    "style-src-elem 'self' https://fonts.googleapis.com https://fonts.cdnfonts.com; "
-    "font-src 'self' https://fonts.gstatic.com https://fonts.cdnfonts.com; "
-    "img-src 'self' https://cdn-icons-png.flaticon.com https://static0.thegamerimages.com https://recess.gg https://minecraft.wiki https://static.wikia.nocookie.net; "
+    "style-src 'self'; "
+    "style-src-elem 'self'; "
+    "font-src 'self'; "
+    "img-src 'self'; "
     "connect-src 'self'; "
     "manifest-src 'self'; "
     "media-src 'self'; "
@@ -48,6 +48,9 @@ def apply_security_headers(response):
     response.headers["X-Frame-Options"] = "DENY"
     response.headers["X-Content-Type-Options"] = "nosniff"
     response.headers["Referrer-Policy"] = "strict-origin-when-cross-origin"
+
+    if request.path == "/static/js/serviceworker.js":
+        response.headers["Service-Worker-Allowed"] = "/"
 
     if request.is_secure:
         response.headers["Strict-Transport-Security"] = (
@@ -92,6 +95,12 @@ def faq_redirect():
 @app.route("/about.html", methods=["GET"])
 def about():
     return render_template("about.html", page_name="about")
+
+
+@app.route("/offline", methods=["GET"])
+@app.route("/offline.html", methods=["GET"])
+def offline():
+    return render_template("offline.html", page_name="offline")
 
 
 if __name__ == "__main__":

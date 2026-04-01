@@ -1,17 +1,34 @@
+const OFFLINE_URL = "/offline.html";
+
 const assets = [
+    "/",
+    "/catalogue",
+    "/about",
+    OFFLINE_URL,
     "/static/css/style.css",
+    "/static/css/theme-variables.css",
     "/static/js/app.js",
-    "/static/images/logo.png",
-    "/static/images/favicon.png",
+    "/static/fonts/XRXV3I6Li01BKofINeaB.woff2",
+    "/static/fonts/Minecrafter.Reg.woff",
+    "/static/fonts/Minecrafter.Alt.woff",
+    "/static/fonts/kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1v-p_4MrImHCIJIZrDCvHOej.woff2",
+    "/static/images/logo.webp",
+    "/static/images/favicon.webp",
+    "/static/images/Burger-icon.webp",
+    "/static/images/Basic Redstone.webp",
+    "/static/images/Simple-Redstone.avif",
+    "/static/images/Logical-Redstone.webp",
+    "/static/images/Wiki.webp",
     "/static/icons/icon-128x128.png",
     "/static/icons/icon-192x192.png",
     "/static/icons/icon-384x384.png",
     "/static/icons/icon-512x512.png",
     "/static/icons/desktop_screenshot.png",
     "/static/icons/mobile_screenshot.png",
+    "/static/images/logo-footer.webp",
 ];
 
-const CATALOGUE_ASSETS = "catalogue-assets-v4";
+const CATALOGUE_ASSETS = "catalogue-assets-v9";
 
 self.addEventListener("install", (installEvt) => {
     installEvt.waitUntil(
@@ -46,15 +63,45 @@ self.addEventListener("activate", function (evt) {
 });
 
 self.addEventListener("fetch", function (evt) {
+    if (evt.request.method !== "GET") {
+        return;
+    }
+
     if (evt.request.mode === "navigate") {
-        evt.respondWith(fetch(evt.request));
+        evt.respondWith(
+            fetch(evt.request)
+                .then((response) => {
+                    const responseCopy = response.clone();
+                    caches.open(CATALOGUE_ASSETS).then((cache) => {
+                        cache.put(evt.request, responseCopy);
+                    });
+                    return response;
+                })
+                .catch(() => {
+                    return caches.match(evt.request).then((cachedResponse) => {
+                        return cachedResponse || caches.match(OFFLINE_URL);
+                    });
+                })
+        );
         return;
     }
 
     evt.respondWith(
-        fetch(evt.request).catch(() => {
-            return caches.open(CATALOGUE_ASSETS).then((cache) => {
-                return cache.match(evt.request);
+        caches.match(evt.request).then((cachedResponse) => {
+            if (cachedResponse) {
+                return cachedResponse;
+            }
+
+            return fetch(evt.request).then((response) => {
+                if (!response || !response.ok || response.type === "opaque") {
+                    return response;
+                }
+
+                const responseCopy = response.clone();
+                caches.open(CATALOGUE_ASSETS).then((cache) => {
+                    cache.put(evt.request, responseCopy);
+                });
+                return response;
             });
         })
     );

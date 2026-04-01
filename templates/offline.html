@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<section class="about-section" aria-label="Offline mode">
+    <div class="about-hero">
+        <h1 class="intro-heading">
+            <b>You are offline</b>
+        </h1>
+        <p>The app needs a connection the first time to save pages for offline use.</p>
+    </div>
+</section>
+
+<section class="about-content" aria-label="Offline information">
+    <div class="about-block">
+        <h3>What you can do</h3>
+        <p>Try opening pages you have already visited, or reconnect and refresh to cache them.</p>
+        <a href="{{ url_for('home') }}" class="minecraft-button">Return home</a>
+    </div>
+</section>
+
+{% endblock %}
