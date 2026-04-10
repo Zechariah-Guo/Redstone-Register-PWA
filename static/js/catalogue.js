@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (isCompactNav) {
             navbarSearchInput.classList.add("hidden");
             if (jumpTopButton) {
-                jumpTopButton.classList.add("hidden");
+                jumpTopButton.classList.toggle("hidden", !showFloatingSearchFromScroll);
             }
             syncNavSearchClearVisibility();
             return;
