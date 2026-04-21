@@ -17,7 +17,7 @@
                 "src": "icons/maskable_icon_x128.png",
                 "type": "image/png",
                 "sizes": "128x128",
-                "purpose": "any maskable"
+                "purpose": "maskable"
             },
             {
                 "src": "icons/icon-192x192.png",
@@ -29,7 +29,7 @@
                 "src": "icons/maskable_icon_x192.png",
                 "type": "image/png",
                 "sizes": "192x192",
-                "purpose": "any maskable"
+                "purpose": "maskable"
             },
             {
                 "src": "icons/icon-384x384.png",
@@ -41,7 +41,7 @@
                 "src": "icons/maskable_icon_x384.png",
                 "type": "image/png",
                 "sizes": "384x384",
-                "purpose": "any maskable"
+                "purpose": "maskable"
             },
             {
                 "src": "icons/icon-512x512.png",
@@ -53,7 +53,7 @@
                 "src": "icons/maskable_icon_x512.png",
                 "type": "image/png",
                 "sizes": "512x512",
-                "purpose": "any maskable"
+                "purpose": "maskable"
             }
         ],
     "screenshots" : [
