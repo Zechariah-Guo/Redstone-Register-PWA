@@ -34,7 +34,7 @@ const OPTIONAL_ASSETS = [
     "/static/icons/mobile_screenshot.png",
 ];
 
-const CATALOGUE_ASSETS = "catalogue-assets-v12";
+const CATALOGUE_ASSETS = "catalogue-assets-v13";
 
 self.addEventListener("install", (installEvt) => {
     installEvt.waitUntil(
