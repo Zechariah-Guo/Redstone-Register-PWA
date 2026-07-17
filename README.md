@@ -1,4 +1,4 @@
-![The Redstone Register Logo](static/images/logo.png)
+![The Redstone Register Logo](static/images/logo.webp)
 
 ## What this repo is
 This repository is a Flask-based Progressive Web App (PWA) for a catalogue called **Redstone Register**.
